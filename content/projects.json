@@ -5,9 +5,9 @@
       "title": "Space Analogs",
       "year": "2026",
       "kind": "Feature · In development",
-      "summary": "Feature film co-written with Jules Roux. A married couple joins a year-long Mars analog mission, and isolation pulls the crew apart.",
+      "summary": "Feature film co-written with Jules Roux. A married couple joins a year-long Mars analog mission, and isolation pulls apart both the marriage and the crew.",
       "body": [
-        "[Longer description of the project: what it is about, where it stands, who it is made with.]"
+        "Treatment complete; screenplay in progress."
       ],
       "images": [
         {
@@ -42,7 +42,7 @@
       "title": "Judafest",
       "year": "2026",
       "kind": "Exhibition",
-      "summary": "Paintings shown in a Prague synagogue during the Judafest festival, October 2026.",
+      "summary": "Paintings shown in a synagogue during the Judafest festival in Prague, 11 October 2026.",
       "body": [
         "[Longer description of the exhibition: the space, the works shown, dates.]"
       ],
@@ -126,12 +126,13 @@
     },
     {
       "slug": "farma-cesko",
-      "title": "Farma Česko",
-      "year": "[Year]",
-      "kind": "Television",
-      "summary": "Episodic scripts, production structure and the live finale for the reality show, produced by Joy Department.",
+      "title": "Farma",
+      "year": "2025",
+      "kind": "Television · TV Nova",
+      "summary": "Episodic scripts, storylines and the live finale for the Czech reality show on TV Nova, produced by Joy Department.",
       "body": [
-        "[Longer description of your work on the show.]"
+        "I wrote episodic scripts and structured storylines for the show, working closely with the production team on narrative and dramaturgy.",
+        "I also developed the production structures and wrote the script for the live finale."
       ],
       "images": [
         {
