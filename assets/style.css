@@ -374,12 +374,22 @@ body::before { /* paints the band above the sticky header on phones */
 
 /* Sans display type: lighter weight, tighter tracking at large sizes */
 .name, .logo, .menu-main, .projects-title, .tile-text h3, .project-text h1, .project-text h3, .cta h2 {
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   font-variation-settings: "opsz" 96;
 }
-.logo { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; }
+.logo { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
 .about p { font-family: var(--body); font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; font-weight: 400; letter-spacing: 0; max-width: 58ch; }
 body { font-size: 15px; }
 .label { letter-spacing: 0.08em; }
 .cta h2 em { font-style: normal; }
+
+/* Navigation in the title face, not the mono text face */
+.nav, .nav .pill, .menu .pill, .menu-col {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.menu-col .head { font-weight: 400; }
