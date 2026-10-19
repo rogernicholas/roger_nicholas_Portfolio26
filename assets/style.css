@@ -8,7 +8,7 @@
   --accent: #2B3FA0; /* ultramarine */
   --on-ink: #F2EDE3;
   --on-ink-soft: #B9B1A3;
-  --display: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --display: "Courier Prime", "Courier New", Courier, monospace;
   --body: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --label-size: 13px;
   --label-track: 0.14em;
@@ -372,12 +372,18 @@ body::before { /* paints the band above the sticky header on phones */
 .menu a:hover, .site-footer a:hover { color: var(--on-ink); opacity: 0.7; }
 .foot-row { border-top-color: rgba(242, 237, 227, 0.35); }
 
-/* Sans display type: lighter weight, tighter tracking at large sizes */
+/* Screenplay type: Courier Prime for the name, headings and labels; Bricolage Grotesque for reading */
 .name, .logo, .menu-main, .projects-title, .tile-text h3, .project-text h1, .project-text h3, .cta h2 {
   font-weight: 400;
-  letter-spacing: -0.03em;
-  font-variation-settings: "opsz" 96;
+  letter-spacing: -0.01em;
 }
-.logo { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; }
+.name { font-size: clamp(20px, 2.2vw, 28px); letter-spacing: 0.02em; }
+.logo { font-size: 20px; }
+.label, .tile-text .meta, .project-text .meta { font-family: var(--display); letter-spacing: 0.06em; }
+.projects-title { font-size: clamp(32px, 4vw, 48px); }
+.tile-text h3 { font-size: clamp(22px, 2vw, 28px); }
+.project-text h1 { font-size: clamp(34px, 4.4vw, 60px); }
+.cta h2 { font-size: clamp(34px, 4.6vw, 68px); line-height: 1.1; }
+.menu-main { font-size: clamp(34px, 4.6vw, 56px); }
 .about p { font-weight: 350; letter-spacing: -0.01em; }
 .cta h2 em { font-style: normal; }
