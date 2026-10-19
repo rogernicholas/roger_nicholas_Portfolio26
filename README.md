@@ -61,7 +61,7 @@ Each project has:
 - `body`: a list of paragraphs for the project page.
 - `tech`: optional, a line such as `HTML · CSS · JavaScript`, shown under the text.
 - `links`: optional buttons under the text, each `{ "label": "Watch on ČT art", "url": "https://…" }`. A file in `files/` works too, like the portfolio PDF.
-- `video`: optional, a Vimeo film: `{ "vimeo": "488553290" }`, the number from the end of the Vimeo link. The project's first image becomes a large still with a "Watch the film" button that opens it on Vimeo.
+- `video`: optional, a Vimeo film: `{ "vimeo": "488553290", "hash": "9ac8508919" }`. Both are in Vimeo's embed code: `player.vimeo.com/video/488553290?h=9ac8508919`. A public video doesn't need `hash`. The project's first image becomes a large still with a "Watch the film" button; clicking it plays the film right there.
 - `images`: all images for the project page, each with an optional `caption`. The first one is the project's image on the home page, so put the strongest first. A project with no images is listed as a single line under the image rows.
 
 Projects are shown newest first by the latest year in `year`. A `year` in words (`Coming soon`) goes first; projects without a year come last, in file order.

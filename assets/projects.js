@@ -216,17 +216,29 @@
     head.appendChild(el('p', 'summary', p.summary));
     page.appendChild(head);
 
-    // the film: its first still with a play button, opening it on Vimeo. A
-    // plain link instead of an embedded player keeps the page light.
+    // the film: its first still with a play button. The Vimeo player only
+    // loads when it's clicked, then plays in place, so the page stays light.
     var stills = p.images || [];
     if (p.video && p.video.vimeo) {
+      var v = p.video;
       var film = el('a', 'video');
-      film.href = 'https://vimeo.com/' + encodeURIComponent(p.video.vimeo);
-      film.target = '_blank';
-      film.rel = 'noopener';
-      film.setAttribute('aria-label', 'Watch ' + p.title + ' on Vimeo');
+      film.href = 'https://vimeo.com/' + v.vimeo + (v.hash ? '/' + v.hash : '');
+      film.setAttribute('aria-label', 'Play ' + p.title);
       film.appendChild(Site.shot(stills[0]));
       film.appendChild(el('span', 'play pill', '▶ Watch the film'));
+      film.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return; // new tab: open on Vimeo
+        e.preventDefault();
+        var frame = document.createElement('iframe');
+        frame.src = 'https://player.vimeo.com/video/' + v.vimeo + '?' + (v.hash ? 'h=' + v.hash + '&' : '') +
+          'autoplay=1&dnt=1&title=0&byline=0&portrait=0&color=2B3FA0';
+        frame.title = p.title;
+        frame.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media';
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        frame.allowFullscreen = true;
+        film.classList.add('playing');
+        film.replaceChildren(frame);
+      });
       page.appendChild(film);
       stills = stills.slice(1);
     }
