@@ -1,179 +1,548 @@
 {
   "projects": [
     {
-      "slug": "space-analogs",
-      "title": "Space Analogs",
-      "year": "2026",
-      "kind": "Feature · In development",
-      "summary": "Feature film co-written with Jules Roux. A married couple joins a year-long Mars analog mission, and isolation pulls apart both the marriage and the crew.",
-      "body": [
-        "Treatment complete; screenplay in progress."
-      ],
-      "images": [
-        {
-          "src": "",
-          "alt": "",
-          "ratio": "16 / 9",
-          "tone": "#C7CDD3",
-          "label": "Film still",
-          "caption": ""
-        },
-        {
-          "src": "",
-          "alt": "",
-          "ratio": "4 / 5",
-          "tone": "#B9C2CC",
-          "label": "Still",
-          "caption": ""
-        },
-        {
-          "src": "",
-          "alt": "",
-          "ratio": "4 / 5",
-          "tone": "#D3D8DD",
-          "label": "Still",
-          "caption": ""
-        }
-      ],
-      "field": "Film"
-    },
-    {
       "slug": "judafest",
       "title": "Judafest",
       "year": "2026",
+      "field": "Painting",
       "kind": "Exhibition",
-      "summary": "Paintings shown in a synagogue during the Judafest festival in Prague, 11 October 2026.",
+      "summary": "An exhibition in a Prague synagogue, 11 October 2026.",
       "body": [
-        "[Longer description of the exhibition: the space, the works shown, dates.]"
+        "Paintings shown in a synagogue in Prague during the Judafest festival, 11 October 2026.",
+        "Installation photographs by Markéta Vlasatá."
+      ],
+      "tech": "",
+      "links": [],
+      "images": [
+        {
+          "src": "images/painting/judafest-installation.jpg",
+          "alt": "Visitors at the Judafest exhibition in the synagogue",
+          "ratio": "2000 / 1333",
+          "caption": "Installation view. Photo: Markéta Vlasatá"
+        },
+        {
+          "src": "images/painting/judafest-bathers.jpg",
+          "alt": "Bathers hanging in the synagogue",
+          "ratio": "1600 / 1067",
+          "caption": "Bathers, installed. Photo: Markéta Vlasatá"
+        },
+        {
+          "src": "images/painting/judafest-deserted.jpg",
+          "alt": "Deserted hanging in the synagogue, with a visitor",
+          "ratio": "1067 / 1600",
+          "caption": "Deserted, installed. Photo: Markéta Vlasatá"
+        },
+        {
+          "src": "images/painting/judafest-juicer.jpg",
+          "alt": "Juicer hanging in the synagogue, with a visitor",
+          "ratio": "1067 / 1600",
+          "caption": "Juicer at Judafest. Photo: Markéta Vlasatá"
+        }
+      ]
+    },
+    {
+      "slug": "oils",
+      "title": "Oils",
+      "year": "2023 – 2026",
+      "field": "Painting",
+      "kind": "A selection of paintings",
+      "summary": "Oil paintings of figures turned away, and the pull between home and the road.",
+      "body": [
+        "I trained as a screenwriter before I painted, and I still think in scenes. A painting, for me, is the moment just before or just after something happens.",
+        "I build each picture on the tension between warm and cold, between the calm of home and the urge to leave it. My figures usually turn away. I would rather you stand where they stand than look at their faces.",
+        "The work grows one painting at a time, like a diary of looking for a place of my own."
+      ],
+      "tech": "",
+      "links": [
+        {
+          "label": "Portfolio (PDF)",
+          "url": "files/roger-nicholas-portfolio-2026.pdf"
+        }
       ],
       "images": [
         {
-          "src": "",
-          "alt": "",
-          "ratio": "3 / 4",
-          "tone": "#D9C9A8",
-          "label": "Painting",
+          "src": "images/painting/what-did-you-find.jpg",
+          "alt": "What Did You Find?, oil painting",
+          "ratio": "1200 / 1600",
+          "caption": "What Did You Find?, 2026. Oil on canvas, 180 × 120 cm"
+        },
+        {
+          "src": "images/painting/deserted.jpg",
+          "alt": "Deserted, oil painting",
+          "ratio": "1066 / 1600",
+          "caption": "Deserted, 2026. Oil on canvas, 180 × 120 cm"
+        },
+        {
+          "src": "images/painting/bathers.jpg",
+          "alt": "Bathers, oil painting",
+          "ratio": "1600 / 1200",
+          "caption": "Bathers, 2026. Oil on canvas, 60 × 80 cm"
+        },
+        {
+          "src": "images/painting/the-boy.jpg",
+          "alt": "The Boy hanging at Judafest, with visitors",
+          "ratio": "1066 / 1600",
+          "caption": "The Boy, 2025. Oil on canvas, 120 × 100 cm. Installation view, Judafest, Prague 2026. Photo: Markéta Vlasatá"
+        },
+        {
+          "src": "images/painting/beyond-the-forest.jpg",
+          "alt": "Beyond the Forest, a diptych on a wall",
+          "ratio": "1600 / 1067",
+          "caption": "Beyond the Forest, 2025. Oil on canvas, 120 × 200 cm. Diptych, installed"
+        },
+        {
+          "src": "images/painting/night-fishing.jpg",
+          "alt": "Night Fishing, oil painting",
+          "ratio": "1600 / 1333",
+          "caption": "Night Fishing, 2023. Oil on canvas, 100 × 120 cm"
+        },
+        {
+          "src": "images/painting/suicide.jpg",
+          "alt": "Suicide, oil painting",
+          "ratio": "1244 / 1600",
+          "caption": "Suicide, 2023. Oil on canvas, 90 × 70 cm"
+        },
+        {
+          "src": "images/painting/juicer.jpg",
+          "alt": "Juicer, oil painting",
+          "ratio": "1244 / 1600",
+          "caption": "Juicer, 2024. Oil on canvas, 90 × 70 cm"
+        }
+      ]
+    },
+    {
+      "slug": "drawings",
+      "title": "Drawings",
+      "year": "",
+      "field": "Painting",
+      "kind": "",
+      "summary": "Sketchbook pages and life drawing studies.",
+      "body": [
+        "Studies from the sketchbook and from regular life drawing sessions, with poses of 4 to 15 minutes, in pencil, pastel and watercolour."
+      ],
+      "tech": "",
+      "links": [],
+      "images": [
+        {
+          "src": "images/painting/drawing-01.jpg",
+          "alt": "Drawing from the sketchbook",
+          "ratio": "1600 / 1138",
           "caption": ""
         },
         {
-          "src": "",
-          "alt": "",
-          "ratio": "3 / 2",
-          "tone": "#CFC3AE",
-          "label": "Installation photo",
+          "src": "images/painting/drawing-02.jpg",
+          "alt": "Drawing from the sketchbook",
+          "ratio": "1195 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/painting/drawing-03.jpg",
+          "alt": "Drawing from the sketchbook",
+          "ratio": "1097 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/painting/drawing-04.jpg",
+          "alt": "Drawing from the sketchbook",
+          "ratio": "1080 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/painting/drawing-05.jpg",
+          "alt": "Drawing from the sketchbook",
+          "ratio": "1200 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/painting/drawing-06.jpg",
+          "alt": "Drawing from the sketchbook",
+          "ratio": "1209 / 1600",
           "caption": ""
         }
-      ],
-      "field": "Painting"
+      ]
     },
     {
-      "slug": "mexico-series",
-      "title": "Mexico series",
+      "slug": "space-analogues",
+      "title": "Space Analogues",
       "year": "2026",
-      "kind": "Ongoing",
-      "summary": "A looser series of 60 × 80 cm oils, developed from time in Oaxaca and Mexico City.",
+      "field": "Film",
+      "kind": "Feature · In development",
+      "summary": "A feature film with Jules Roux, currently in development.",
       "body": [
-        "[Longer description of the series.]"
+        "A feature film co-written with Jules Roux. A married couple joins a year-long Mars analog mission, and isolation pulls apart both the marriage and the crew.",
+        "Treatment complete; screenplay in progress."
       ],
+      "tech": "",
+      "links": [],
       "images": [
         {
-          "src": "",
-          "alt": "",
-          "ratio": "3 / 4",
-          "tone": "#E3CF98",
-          "label": "Painting",
-          "caption": ""
-        },
-        {
-          "src": "",
-          "alt": "",
-          "ratio": "3 / 4",
-          "tone": "#E0B9A5",
-          "label": "Painting",
-          "caption": ""
-        },
-        {
-          "src": "",
-          "alt": "",
-          "ratio": "3 / 4",
-          "tone": "#CDB6C4",
-          "label": "Painting",
-          "caption": ""
-        }
-      ],
-      "field": "Painting"
-    },
-    {
-      "slug": "web-studio",
-      "title": "[Web project]",
-      "year": "2025",
-      "kind": "Website",
-      "field": "Web",
-      "summary": "[One line on a site you designed or built.]",
-      "body": [
-        "[What it is, who it was for, what you did.]"
-      ],
-      "images": [
-        {
-          "src": "",
-          "alt": "",
-          "ratio": "16 / 10",
-          "tone": "#C9D2E3",
-          "label": "Screenshot",
+          "src": "images/film/space-analogues.jpg",
+          "alt": "A printed writing schedule for the screenplay, with scenes grouped by week",
+          "ratio": "1200 / 1600",
           "caption": ""
         }
       ]
     },
     {
       "slug": "farma-cesko",
-      "title": "Farma",
+      "title": "Farma Česko",
       "year": "2025",
-      "kind": "Television · TV Nova",
-      "summary": "Episodic scripts, storylines and the live finale for the Czech reality show on TV Nova, produced by Joy Department.",
+      "field": "Film",
+      "kind": "Television",
+      "summary": "TV scripts and the live finale for Joy Department s.r.o.",
       "body": [
-        "I wrote episodic scripts and structured storylines for the show, working closely with the production team on narrative and dramaturgy.",
+        "I wrote episodic scripts and structured storylines for the Czech reality show on TV Nova, working closely with the production team on narrative and dramaturgy.",
         "I also developed the production structures and wrote the script for the live finale."
       ],
-      "images": [
-        {
-          "src": "",
-          "alt": "",
-          "ratio": "16 / 9",
-          "tone": "#BFC7AE",
-          "label": "Still",
-          "caption": ""
-        }
-      ],
-      "field": "Film"
+      "tech": "",
+      "links": [],
+      "images": []
     },
     {
-      "slug": "large-oils",
-      "title": "Large oils",
-      "year": "Ongoing",
-      "kind": "",
-      "summary": "120 × 160 cm canvases on solitude, softness and the inner world. Enquire for availability.",
+      "slug": "orange-lights",
+      "title": "Orange lights",
+      "year": "",
+      "field": "Film",
+      "kind": "Short film · 15 min",
+      "summary": "Final version written and directed by Jules Roux, based on my subject and a rough first version.",
       "body": [
-        "[Longer description of the large oils.]"
+        "A 15-minute short film. The final version was written and directed by Jules Roux, based on my subject and a rough first version."
       ],
+      "tech": "",
+      "links": [],
       "images": [
         {
-          "src": "",
-          "alt": "",
-          "ratio": "3 / 4",
-          "tone": "#D3C4B5",
-          "label": "Painting",
+          "src": "images/film/orange-lights-2.jpg",
+          "alt": "Still from Orange lights: two people on a bench by the river at dusk",
+          "ratio": "1800 / 812",
           "caption": ""
         },
         {
-          "src": "",
-          "alt": "",
-          "ratio": "3 / 4",
-          "tone": "#D9C9A8",
-          "label": "Painting",
+          "src": "images/film/orange-lights-1.jpg",
+          "alt": "Still from Orange lights: two people in a street at night",
+          "ratio": "1800 / 815",
           "caption": ""
         }
+      ]
+    },
+    {
+      "slug": "all-that-lies-beneath",
+      "title": "All that lies beneath",
+      "year": "2025",
+      "field": "Film",
+      "kind": "Short film · 25 min",
+      "summary": "Co-written with director Jules Roux, based on his subject. Featured at FAMUFEST.",
+      "body": [
+        "Marek sets out into a system of underground tunnels to find his brother, led astray by the war. In bad times, when freedom exists only as a fluttering bird, the brothers ask whether it is still possible to let it out of its cage.",
+        "A 25-minute short film, co-written with director Jules Roux and based on his subject. Featured at the FAMUFEST student film festival."
       ],
-      "field": "Painting"
+      "tech": "",
+      "links": [],
+      "images": [
+        {
+          "src": "images/film/all-that-lies-beneath-1.jpg",
+          "alt": "Still from All that lies beneath: a young man in an underground passage",
+          "ratio": "1800 / 989",
+          "caption": ""
+        },
+        {
+          "src": "images/film/all-that-lies-beneath-2.jpg",
+          "alt": "Still from All that lies beneath: a figure in a dark tunnel",
+          "ratio": "1800 / 972",
+          "caption": ""
+        },
+        {
+          "src": "images/film/all-that-lies-beneath-3.jpg",
+          "alt": "Still from All that lies beneath: an older man at a desk",
+          "ratio": "1800 / 1019",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "good-night-sleep-tight",
+      "title": "Good night, sleep tight",
+      "year": "2023",
+      "field": "Film",
+      "kind": "Short film · 14 min",
+      "summary": "Co-written with director Jules Roux from my original screenplay. Nominated for best film at FAMUFEST.",
+      "body": [
+        "Tomorrow Anna has a very important job interview. If it goes well, big changes are waiting for her. She is just on her way home, where all she wants is to rest and get ready for tomorrow. But…",
+        "A 14-minute short film. The script was co-written with director Jules Roux and based on my original screenplay. Nominated for best film at the FAMUFEST student film festival."
+      ],
+      "tech": "",
+      "links": [],
+      "images": [
+        {
+          "src": "images/film/good-night-sleep-tight-1.jpg",
+          "alt": "Still from Good night, sleep tight: Anna sitting on her bed",
+          "ratio": "1800 / 753",
+          "caption": ""
+        },
+        {
+          "src": "images/film/good-night-sleep-tight-2.jpg",
+          "alt": "Still from Good night, sleep tight: Anna on a stairwell seen from above",
+          "ratio": "1800 / 755",
+          "caption": ""
+        },
+        {
+          "src": "images/film/good-night-sleep-tight-3.jpg",
+          "alt": "Still from Good night, sleep tight: a crowded party",
+          "ratio": "1800 / 752",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "i-want-to-die-as-a-martyr",
+      "title": "I want to die as a martyr",
+      "year": "2025",
+      "field": "Film",
+      "kind": "Short film · 8 min",
+      "summary": "Co-written with documentarist Juliana Moska. Produced by FAMU and shown on ČT art.",
+      "body": [
+        "“I just saw a documentary about Syria. They have nice weather there,” says a future Czech jihadist over a family dinner. His remark is only a futile attempt to bring his family closer to the motives that are leading him to join the Islamic State. Inspired by the figure of Jan Silovský, the film follows the dark thoughts of a man determined to leave for Syria.",
+        "An 8-minute short film co-written with documentarist Juliana Moska. Produced by FAMU and shot in the studio. Featured as part of a TV show about young filmmakers on ČT art."
+      ],
+      "tech": "",
+      "links": [
+        {
+          "label": "Watch on ČT art",
+          "url": "https://www.ceskatelevize.cz/porady/10624368437-pruvan/321294340020006/cast/847036/"
+        }
+      ],
+      "images": [
+        {
+          "src": "images/film/i-want-to-die-as-a-martyr-2.jpg",
+          "alt": "Still from I want to die as a martyr: a family at the dinner table",
+          "ratio": "1800 / 1023",
+          "caption": ""
+        },
+        {
+          "src": "images/film/i-want-to-die-as-a-martyr-1.jpg",
+          "alt": "Still from I want to die as a martyr: close-up of a young man",
+          "ratio": "1800 / 990",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "the-pool",
+      "title": "The Pool",
+      "year": "2019",
+      "field": "Film",
+      "kind": "Short film",
+      "summary": "Written with cinematographer Lubomír Ballek, who directed and shot it in France.",
+      "body": [
+        "A short film written with cinematographer Lubomír Ballek, who directed and shot it in France."
+      ],
+      "tech": "",
+      "links": [],
+      "images": []
+    },
+    {
+      "slug": "stvoreni-a-jeho-cesta-ven",
+      "title": "Stvoření a jeho cesta ven",
+      "year": "2021",
+      "field": "Film",
+      "kind": "Short film · 2 min",
+      "summary": "A short film made with still photography.",
+      "body": [
+        "A two-minute short film made with still photography, based on a project from a comics narrative class."
+      ],
+      "tech": "",
+      "links": [],
+      "images": [
+        {
+          "src": "images/film/stvoreni-2.jpg",
+          "alt": "Black-and-white still: a masked figure in a doorway holding a gun",
+          "ratio": "1537 / 1151",
+          "caption": ""
+        },
+        {
+          "src": "images/film/stvoreni-1.jpg",
+          "alt": "Black-and-white still: a close-up of the mask",
+          "ratio": "1537 / 1152",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "olivova-hora",
+      "title": "Olivová hora",
+      "year": "2018",
+      "field": "Film",
+      "kind": "Short documentary · 8mm and digital",
+      "summary": "A short documentary project at FAMU, shot on 8mm and digital.",
+      "body": [
+        "A short documentary project at FAMU, shot on 8mm film and digital."
+      ],
+      "tech": "",
+      "links": [],
+      "images": [
+        {
+          "src": "images/film/olivova-hora.jpg",
+          "alt": "Black-and-white still: a gravestone with Hebrew lettering",
+          "ratio": "1558 / 1130",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "17-ovci-7-slepic",
+      "title": "17 ovcí, 7 slepic",
+      "year": "2018",
+      "field": "Film",
+      "kind": "Short documentary",
+      "summary": "Awarded best documentary at Zlatý voči 2018.",
+      "body": [
+        "A short documentary shot on digital. Awarded best documentary at Zlatý voči 2018, a small international student festival at Film Studies of Charles University."
+      ],
+      "tech": "",
+      "links": [],
+      "images": [
+        {
+          "src": "images/film/17-ovci-7-slepic.jpg",
+          "alt": "Black-and-white still: a hand on a sheep's head",
+          "ratio": "1800 / 1013",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "winevision",
+      "title": "Winevision",
+      "year": "2026",
+      "field": "Web",
+      "kind": "Web design",
+      "summary": "Web design, hero painting, mockup website and copywriting.",
+      "body": [
+        "Web design, a hero painting, a mockup website and copywriting for Winevision, importers of fine organic wine from Italy, France, Spain and Germany."
+      ],
+      "tech": "",
+      "links": [],
+      "images": []
+    },
+    {
+      "slug": "natalie-bergmann",
+      "title": "Natalie Bergmann",
+      "year": "",
+      "field": "Web",
+      "kind": "Psychologist website",
+      "summary": "A lightweight one-page website for a family psychologist, in Czech and English.",
+      "body": [
+        "A lightweight one-page website for a family psychologist, switchable between Czech and English. It covers her services and pricing and has a contact form."
+      ],
+      "tech": "HTML · CSS · JavaScript",
+      "links": [],
+      "images": [
+        {
+          "src": "images/web/natalie-bergmann-1.jpg",
+          "alt": "The website's opening section, with a portrait",
+          "ratio": "1800 / 974",
+          "caption": ""
+        },
+        {
+          "src": "images/web/natalie-bergmann-2.jpg",
+          "alt": "The website's services section",
+          "ratio": "1800 / 979",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "hana-nicholas",
+      "title": "Hana Nicholas",
+      "year": "",
+      "field": "Web",
+      "kind": "English tutor website",
+      "summary": "A one-page website for an English tutor, with booking through Calendly.",
+      "body": [
+        "A one-page website for an English tutor, with her story, student testimonials and a table of lesson packages. Visitors can book a free trial lesson directly through a Calendly link."
+      ],
+      "tech": "HTML · CSS · JavaScript · Calendly",
+      "links": [],
+      "images": [
+        {
+          "src": "images/web/hana-nicholas-1.jpg",
+          "alt": "The website's About section, with a portrait",
+          "ratio": "1440 / 900",
+          "caption": ""
+        },
+        {
+          "src": "images/web/hana-nicholas-2.jpg",
+          "alt": "The website's lesson packages table",
+          "ratio": "1440 / 900",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "agata-slamova",
+      "title": "Agáta Slámová",
+      "year": "2025",
+      "field": "Web",
+      "kind": "Artist portfolio",
+      "summary": "A CMS-driven portfolio site for the artist Agáta Slámová.",
+      "body": [
+        "A CMS-driven portfolio site for the artist Agáta Slámová. It has an interactive paint-on-canvas landing page, galleries with a keyboard-navigable lightbox, and a content backend she updates herself."
+      ],
+      "tech": "Astro · React · Sanity",
+      "links": [],
+      "images": [
+        {
+          "src": "images/web/agata-slamova-2.jpg",
+          "alt": "An exhibition page with a grid of photographs",
+          "ratio": "1440 / 900",
+          "caption": ""
+        },
+        {
+          "src": "images/web/agata-slamova-1.jpg",
+          "alt": "The About page, with a black-and-white photograph",
+          "ratio": "1440 / 900",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "strongr",
+      "title": "Strongr",
+      "year": "",
+      "field": "Web",
+      "kind": "Workout tracker app",
+      "summary": "An offline Android app for logging workouts and following progress.",
+      "body": [
+        "An offline Android app for logging workouts, saving routines and following progress with charts and a calendar. All data stays on the phone.",
+        "In large part vibecoded with Claude Code."
+      ],
+      "tech": "React Native · Expo · TypeScript · SQLite",
+      "links": [],
+      "images": [
+        {
+          "src": "images/web/strongr-1.jpg",
+          "alt": "The app's start screen",
+          "ratio": "739 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/web/strongr-3.jpg",
+          "alt": "A progress chart for bench press",
+          "ratio": "739 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/web/strongr-2.jpg",
+          "alt": "The calendar of logged workouts",
+          "ratio": "739 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/web/strongr-4.jpg",
+          "alt": "Choosing exercises for a routine",
+          "ratio": "739 / 1600",
+          "caption": ""
+        }
+      ]
     }
   ]
 }

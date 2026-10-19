@@ -26,9 +26,9 @@ Anything still waiting for real content shows in square brackets with a dashed b
 
 Every image, in either file, has the same fields:
 
-- `src`: the path to the file, e.g. `"images/judafest-1.jpg"`. Leave it empty to show a tinted placeholder.
+- `src`: the path to the file, e.g. `"images/painting/bathers.jpg"`. Images are sorted into `images/painting`, `images/film` and `images/web`. Leave it empty to show a tinted placeholder.
 - `alt`: a short description for screen readers and search engines.
-- `ratio`: the image's width / height, e.g. `"3 / 2"` for landscape or `"4 / 5"` for portrait. This sets the shape before the image loads, so get it close to the real file.
+- `ratio`: the image's width / height, e.g. `"1600 / 1200"` (the pixel size works) or `"4 / 5"`. This sets the shape before the image loads, so get it close to the real file.
 - `tone`: the placeholder colour, which you can drop once `src` is set.
 - `label`: the placeholder text, which you can drop once `src` is set.
 
@@ -42,14 +42,16 @@ Each entry in `works` is one image with `title` and `caption`, shown underneath 
 
 Each project has:
 
-- `slug`: the short name used in its link, lowercase with dashes (e.g. `mexico-series`). Change it and old links stop working.
-- `title`, `year`, `summary`: shown on the home page and at the top of the project page.
+- `slug`: the short name used in its link, lowercase with dashes (e.g. `good-night-sleep-tight`). Change it and old links stop working.
+- `title`, `year`, `summary`: shown on the home page and at the top of the project page. `year` can be a range (`2023 – 2026`) or left empty.
 - `field`: `Painting`, `Film` or `Web`. This is what the filters above the projects and the Fields in the menu use.
 - `kind`: a short description shown on the project page next to the year and field (e.g. `Feature · In development`).
 - `body`: a list of paragraphs for the project page.
-- `images`: all images for the project page, each with an optional `caption`. The first one is the project's image on the home page, so put the strongest first.
+- `tech`: optional, a line such as `HTML · CSS · JavaScript`, shown under the text.
+- `links`: optional buttons under the text, each `{ "label": "Watch on ČT art", "url": "https://…" }`. A file in `files/` works too, like the portfolio PDF.
+- `images`: all images for the project page, each with an optional `caption`. The first one is the project's image on the home page, so put the strongest first. A project with no images is listed as a single line under the image rows.
 
-Projects are shown newest first by `year`; projects without a number for the year (e.g. `Ongoing`) come last, in file order.
+Projects are shown newest first by the latest year in `year`; projects without a year come last, in file order.
 
 ## Code
 

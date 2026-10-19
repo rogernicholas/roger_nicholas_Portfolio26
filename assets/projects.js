@@ -9,19 +9,21 @@
 
   function link(p) { return 'project.html#' + p.slug; }
 
-  // "2026 · Film", plus the kind on the project page
+  // "2026 · Film", plus the kind on the project page; any part may be missing
   function meta(p, withKind) {
-    var m = el('p', 'meta label');
-    m.appendChild(el('span', null, p.year));
-    if (p.field) m.appendChild(document.createTextNode(' · ' + p.field));
-    if (withKind && p.kind) m.appendChild(document.createTextNode(' · ' + p.kind));
-    return m;
+    var parts = [p.year, p.field];
+    if (withKind) parts.push(p.kind);
+    return el('p', 'meta label', parts.filter(Boolean).join(' · '));
   }
 
-  // newest first; years that aren't a number ("Ongoing") go last, in file order
+  // newest first by the latest year mentioned ("2023 – 2026" counts as 2026);
+  // projects without a year go last, in file order
   function byYear(projects) {
     return projects
-      .map(function (p, i) { return { p: p, y: parseInt(p.year, 10) || 0, i: i }; })
+      .map(function (p, i) {
+        var years = String(p.year || '').match(/\d{4}/g) || [0];
+        return { p: p, y: Math.max.apply(null, years.map(Number)), i: i };
+      })
       .sort(function (a, b) { return b.y - a.y || a.i - b.i; })
       .map(function (x) { return x.p; });
   }
@@ -77,11 +79,29 @@
     return { node: a, r: r };
   }
 
+  // Projects without images: one line each under the image rows.
+  function renderMore(projects) {
+    var ol = el('ol', 'project-more');
+    projects.forEach(function (p) {
+      var li = el('li');
+      li.appendChild(el('span', 'label', p.year || ''));
+      var a = el('a');
+      a.href = link(p);
+      a.appendChild(el('h3', null, p.title));
+      a.appendChild(el('p', null, p.summary));
+      li.appendChild(a);
+      ol.appendChild(li);
+    });
+    return ol;
+  }
+
   function renderList(projects) {
+    var more = projects.filter(function (p) { return !(p.images && p.images.length); });
+    projects = projects.filter(function (p) { return p.images && p.images.length; });
     var w = list.clientWidth;
     var narrow = w < 640;
     var gap = narrow ? 0 : 40; // matches --s-4 between tiles
-    var h = 340;               // target image height for a row
+    var h = 300;               // target image height for a row
     var rows = [], row = [], sum = 0;
     projects.map(tile).forEach(function (t) {
       var wouldBe = (sum + t.r) * h + row.length * gap;
@@ -92,9 +112,14 @@
       row.push(t); sum += t.r;
     });
     if (row.length) rows.push({ items: row, sum: sum });
+    // don't leave a lone tile at the end when the row before has room
+    var last = rows[rows.length - 1], prev = rows[rows.length - 2];
+    if (!narrow && prev && last.items.length === 1 && prev.items.length < 3) {
+      prev.items.push(last.items[0]); prev.sum += last.sum; rows.pop();
+    }
 
     list.textContent = '';
-    if (!projects.length) list.appendChild(el('p', 'load-error', 'Nothing here yet.'));
+    if (!projects.length && !more.length) list.appendChild(el('p', 'load-error', 'Nothing here yet.'));
     rows.forEach(function (rw) {
       var line = el('div', 'project-row');
       rw.items.forEach(function (t) {
@@ -107,6 +132,7 @@
       if (!narrow && natural < w * 0.8) line.style.maxWidth = Math.round(natural * 1.15) + 'px';
       list.appendChild(line);
     });
+    if (more.length) list.appendChild(renderMore(more));
   }
 
   function renderPage(projects) {
@@ -132,9 +158,16 @@
     });
     page.appendChild(gallery);
 
-    if (p.body && p.body.length) {
+    if ((p.body && p.body.length) || p.tech || (p.links && p.links.length)) {
       var body = el('div', 'detail-body');
-      p.body.forEach(function (t) { body.appendChild(el('p', null, t)); });
+      (p.body || []).forEach(function (t) { body.appendChild(el('p', null, t)); });
+      if (p.tech) body.appendChild(el('p', 'tech label', p.tech));
+      (p.links || []).forEach(function (l) {
+        var a = el('a', 'pill', l.label);
+        a.href = l.url;
+        if (/^https?:/.test(l.url)) { a.target = '_blank'; a.rel = 'noopener'; }
+        body.appendChild(a);
+      });
       page.appendChild(body);
     }
 

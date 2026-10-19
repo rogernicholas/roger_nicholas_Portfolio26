@@ -1,11 +1,81 @@
 {
   "works": [
-    { "src": "", "alt": "", "ratio": "4 / 5", "tone": "#D9C9A8", "label": "Painting", "title": "[Title]", "caption": "Oil on canvas, 120 × 160 cm" },
-    { "src": "", "alt": "", "ratio": "16 / 9", "tone": "#C7CDD3", "label": "Film still", "title": "[Title]", "caption": "Space Analogs" },
-    { "src": "", "alt": "", "ratio": "1 / 1", "tone": "#E0B9A5", "label": "Painting", "title": "[Title]", "caption": "Mexico series, 60 × 80 cm" },
-    { "src": "", "alt": "", "ratio": "3 / 2", "tone": "#BFC7AE", "label": "Photo", "title": "[Title]", "caption": "Prague" },
-    { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#E3CF98", "label": "Painting", "title": "[Title]", "caption": "Oil on canvas, 120 × 160 cm" },
-    { "src": "", "alt": "", "ratio": "2 / 3", "tone": "#CDB6C4", "label": "Photo", "title": "[Title]", "caption": "Oaxaca" },
-    { "src": "", "alt": "", "ratio": "4 / 3", "tone": "#D3C4B5", "label": "Painting", "title": "[Title]", "caption": "Judafest, 2026" }
+    {
+      "src": "images/painting/what-did-you-find.jpg",
+      "alt": "What Did You Find?",
+      "ratio": "1200 / 1600",
+      "title": "What Did You Find?",
+      "caption": "oil on canvas, 2026"
+    },
+    {
+      "src": "images/film/orange-lights-2.jpg",
+      "alt": "Orange lights",
+      "ratio": "1800 / 812",
+      "title": "Orange lights",
+      "caption": "short film"
+    },
+    {
+      "src": "images/painting/bathers.jpg",
+      "alt": "Bathers",
+      "ratio": "1600 / 1200",
+      "title": "Bathers",
+      "caption": "oil on canvas, 2026"
+    },
+    {
+      "src": "images/film/good-night-sleep-tight-1.jpg",
+      "alt": "Good night, sleep tight",
+      "ratio": "1800 / 753",
+      "title": "Good night, sleep tight",
+      "caption": "short film, 2023"
+    },
+    {
+      "src": "images/painting/juicer.jpg",
+      "alt": "Juicer",
+      "ratio": "1244 / 1600",
+      "title": "Juicer",
+      "caption": "oil on canvas, 2024"
+    },
+    {
+      "src": "images/web/agata-slamova-2.jpg",
+      "alt": "Agáta Slámová",
+      "ratio": "1440 / 900",
+      "title": "Agáta Slámová",
+      "caption": "website, 2025"
+    },
+    {
+      "src": "images/painting/night-fishing.jpg",
+      "alt": "Night Fishing",
+      "ratio": "1600 / 1333",
+      "title": "Night Fishing",
+      "caption": "oil on canvas, 2023"
+    },
+    {
+      "src": "images/film/17-ovci-7-slepic.jpg",
+      "alt": "17 ovcí, 7 slepic",
+      "ratio": "1800 / 1013",
+      "title": "17 ovcí, 7 slepic",
+      "caption": "short documentary, 2018"
+    },
+    {
+      "src": "images/painting/deserted.jpg",
+      "alt": "Deserted",
+      "ratio": "1066 / 1600",
+      "title": "Deserted",
+      "caption": "oil on canvas, 2026"
+    },
+    {
+      "src": "images/film/stvoreni-2.jpg",
+      "alt": "Stvoření a jeho cesta ven",
+      "ratio": "1537 / 1151",
+      "title": "Stvoření a jeho cesta ven",
+      "caption": "short film, 2021"
+    },
+    {
+      "src": "images/painting/drawing-05.jpg",
+      "alt": "Drawing",
+      "ratio": "1200 / 1600",
+      "title": "Drawing",
+      "caption": "sketchbook"
+    }
   ]
 }

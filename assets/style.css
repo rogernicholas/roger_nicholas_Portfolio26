@@ -369,6 +369,39 @@ body::before { /* paints the band above the sticky header on phones */
 .tile-text .summary { max-width: 48ch; }
 .load-error { color: var(--ink-soft); text-align: center; }
 
+/* projects without images: one line each, under the rows */
+.project-more {
+  width: 100%;
+  max-width: 820px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+.project-more li {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--s-3);
+  padding-block: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.project-more .label { padding-top: 5px; color: var(--accent); }
+.project-more h3 {
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  font-variation-settings: "opsz" 24;
+  transition: color 0.2s ease;
+}
+.project-more h3::after { content: " →"; color: var(--accent); }
+.project-more a:hover { color: inherit; }
+.project-more a:hover h3 { color: var(--accent); }
+.project-more p { color: var(--ink-soft); }
+@media (max-width: 640px) {
+  .project-more li { grid-template-columns: 1fr; gap: 4px; }
+  .project-more .label { padding-top: 0; }
+}
+
 /* field filter under the Projects title */
 .filters {
   display: flex;
@@ -424,6 +457,7 @@ body::before { /* paints the band above the sticky header on phones */
   gap: var(--s-3);
 }
 .gallery-item {
+  width: min-content; /* the caption wraps to the image's width */
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -440,6 +474,8 @@ body::before { /* paints the band above the sticky header on phones */
   gap: var(--s-2);
   text-align: center;
 }
+.detail-body .tech { color: var(--accent); }
+.detail-body .pill { align-self: center; margin-top: var(--s-1); }
 .detail-nav {
   width: 100%;
   display: flex;
