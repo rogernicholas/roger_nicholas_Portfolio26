@@ -9,7 +9,7 @@
   --on-ink: #F2EDE3;
   --on-ink-soft: #B9B1A3;
   --display: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --body: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body: "Oxygen Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   --label-size: 13px;
   --label-track: 0.14em;
   --max: 1360px;
@@ -379,5 +379,7 @@ body::before { /* paints the band above the sticky header on phones */
   font-variation-settings: "opsz" 96;
 }
 .logo { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; }
-.about p { font-weight: 350; letter-spacing: -0.01em; }
+.about p { font-family: var(--body); font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; font-weight: 400; letter-spacing: 0; max-width: 58ch; }
+body { font-size: 15px; }
+.label { letter-spacing: 0.08em; }
 .cta h2 em { font-style: normal; }
