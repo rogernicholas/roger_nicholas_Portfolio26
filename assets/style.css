@@ -15,9 +15,9 @@
   --rule: var(--ink);
   --rule-on-accent: rgba(242, 237, 227, 0.35);
 
-  /* type: Bricolage Grotesque for titles and navigation, Oxygen Mono for text */
+  /* type: Bricolage Grotesque for titles and navigation, Fragment Mono for text */
   --f-display: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --f-text: "Oxygen Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  --f-text: "Fragment Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   --t-hero: clamp(40px, 6vw, 84px);    /* footer line, project page title */
   --t-title: clamp(34px, 4.4vw, 56px); /* section titles, menu */
   --t-item: clamp(22px, 2.2vw, 30px);  /* project titles in the grid */
