@@ -477,15 +477,6 @@ body::before { /* paints the band above the sticky header on phones */
   font-size: var(--t-hero);
 }
 .cv-head p { color: var(--ink-soft); }
-.cv-contact {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--s-1) var(--s-3);
-  margin-top: var(--s-2);
-}
-.cv-contact a { color: var(--accent); }
-.cv-profile p { padding-top: var(--s-2); border-top: 1px solid var(--rule); text-wrap: pretty; }
 .cv-section h2 { margin-bottom: var(--s-2); font-size: var(--t-item); }
 .cv-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
 .cv-list li {
@@ -503,7 +494,7 @@ body::before { /* paints the band above the sticky header on phones */
   font-variation-settings: "opsz" 24;
 }
 .cv-list p { color: var(--ink-soft); }
-.cv-list p a { color: var(--accent); }
+.cv-list h3 a::after { content: " →"; color: var(--accent); }
 .cv-list ul {
   margin: var(--s-1) 0 0;
   padding-left: 1.2em;
@@ -514,7 +505,6 @@ body::before { /* paints the band above the sticky header on phones */
 }
 .cv-list ul li { padding: 0; border: 0; display: list-item; }
 .cv-list ul li::marker { color: var(--accent); }
-.cv-list div > p + p { margin-top: var(--s-1); }
 @media (max-width: 640px) {
   .cv-list li { grid-template-columns: 1fr; gap: 4px; }
   .cv-list .label { padding-top: 0; }
