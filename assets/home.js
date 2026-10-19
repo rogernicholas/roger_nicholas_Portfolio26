@@ -23,6 +23,7 @@
   // right at a steady pace. Hovering eases it down to a crawl; it never stops.
   var track = document.getElementById('track');
   var belt = document.getElementById('belt');
+  if (!belt) return; // pages without the carousel
   Array.prototype.slice.call(belt.children).forEach(function (fig) {
     var copy = fig.cloneNode(true);
     copy.setAttribute('aria-hidden', 'true');

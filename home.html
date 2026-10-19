@@ -17,7 +17,6 @@
     <a class="logo" href="index.html" title="Back to the paper">Roger Nicholas</a>
     <nav class="nav label" aria-label="Main">
       <div class="nav-links">
-        <a href="#work">Work</a>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -35,18 +34,18 @@
     </div>
     <div class="menu-grid">
       <nav class="menu-main" aria-label="Sections">
-        <a href="#work">Work</a>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a href="index.html">Paint the page</a>
       </nav>
       <div class="menu-col label">
-        <span class="head">Work</span>
-        <a href="#work">Large oils, 120 × 160</a>
-        <a href="#work">Mexico series</a>
-        <a href="#projects">Screenwriting</a>
-        <a href="#projects">Exhibitions</a>
+        <span class="head">Projects</span>
+        <a href="project.html#space-analogs">Space Analogs</a>
+        <a href="project.html#judafest">Judafest</a>
+        <a href="project.html#mexico-series">Mexico series</a>
+        <a href="project.html#farma-cesko">Farma Česko</a>
+        <a href="project.html#large-oils">Large oils</a>
       </div>
       <div class="menu-col label">
         <span class="head">Elsewhere</span>
@@ -104,64 +103,8 @@
 
   <section class="wrap projects" id="projects">
     <h2 class="projects-title">Projects</h2>
-    <!-- Each project: a group of images, then centred text. Set --ratio to each image's width / height
-         and swap the placeholder span for <img src="images/your-file.jpg" alt="..."> -->
-    <article class="project">
-      <div class="cluster">
-        <div class="shot" style="--ratio:16 / 9; --tone:#C7CDD3"><span class="ph-label label">[Film still]</span></div>
-        <div class="shot" style="--ratio:4 / 5; --tone:#B9C2CC"><span class="ph-label label">[Still]</span></div>
-        <div class="shot" style="--ratio:4 / 5; --tone:#D3D8DD"><span class="ph-label label">[Still]</span></div>
-      </div>
-      <div class="project-text">
-        <p class="meta label">2026 · Feature · In development</p>
-        <h3>Space Analogs</h3>
-        <p>Feature film co-written with Jules Roux. A married couple joins a year-long Mars analog mission, and isolation pulls the crew apart.</p>
-      </div>
-    </article>
-    <article class="project">
-      <div class="cluster">
-        <div class="shot" style="--ratio:3 / 4; --tone:#D9C9A8"><span class="ph-label label">[Painting]</span></div>
-        <div class="shot" style="--ratio:3 / 2; --tone:#CFC3AE"><span class="ph-label label">[Installation photo]</span></div>
-      </div>
-      <div class="project-text">
-        <p class="meta label">2026 · Exhibition</p>
-        <h3>Judafest</h3>
-        <p>Paintings shown in a Prague synagogue during the Judafest festival, October 2026.</p>
-      </div>
-    </article>
-    <article class="project">
-      <div class="cluster">
-        <div class="shot" style="--ratio:3 / 4; --tone:#E3CF98"><span class="ph-label label">[Painting]</span></div>
-        <div class="shot" style="--ratio:3 / 4; --tone:#E0B9A5"><span class="ph-label label">[Painting]</span></div>
-        <div class="shot" style="--ratio:3 / 4; --tone:#CDB6C4"><span class="ph-label label">[Painting]</span></div>
-      </div>
-      <div class="project-text">
-        <p class="meta label">2026 · Painting · Ongoing</p>
-        <h3>Mexico series</h3>
-        <p>A looser series of 60 × 80 cm oils, developed from time in Oaxaca and Mexico City.</p>
-      </div>
-    </article>
-    <article class="project">
-      <div class="cluster solo">
-        <div class="shot" style="--ratio:16 / 9; --tone:#BFC7AE"><span class="ph-label label">[Still]</span></div>
-      </div>
-      <div class="project-text">
-        <p class="meta label"><span class="ph">[Year]</span> · Television</p>
-        <h3>Farma Česko</h3>
-        <p>Episodic scripts, production structure and the live finale for the reality show, produced by Joy Department.</p>
-      </div>
-    </article>
-    <article class="project">
-      <div class="cluster">
-        <div class="shot" style="--ratio:3 / 4; --tone:#D3C4B5"><span class="ph-label label">[Painting]</span></div>
-        <div class="shot" style="--ratio:3 / 4; --tone:#D9C9A8"><span class="ph-label label">[Painting]</span></div>
-      </div>
-      <div class="project-text">
-        <p class="meta label">Ongoing · Painting</p>
-        <h3>Large oils</h3>
-        <p>120 × 160 cm canvases on solitude, softness and the inner world. Enquire for availability.</p>
-      </div>
-    </article>
+    <!-- Filled from content/projects.json by assets/projects.js -->
+    <div class="project-list" id="project-list"></div>
   </section>
 </main>
 
@@ -181,5 +124,6 @@
 </footer>
 
 <script src="assets/home.js"></script>
+<script src="assets/projects.js"></script>
 </body>
 </html>
