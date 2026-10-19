@@ -216,6 +216,20 @@
     head.appendChild(el('p', 'summary', p.summary));
     page.appendChild(head);
 
+    // the film itself, above the stills
+    if (p.video && p.video.vimeo) {
+      var film = el('div', 'video');
+      film.style.setProperty('--ratio', p.video.ratio || '16 / 9');
+      var frame = document.createElement('iframe');
+      frame.src = 'https://player.vimeo.com/video/' + encodeURIComponent(p.video.vimeo) + '?dnt=1&title=0&byline=0&portrait=0&color=2B3FA0';
+      frame.title = p.title;
+      frame.allow = 'autoplay; fullscreen; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.loading = 'lazy';
+      film.appendChild(frame);
+      page.appendChild(film);
+    }
+
     var gallery = el('div', 'gallery');
     (p.images || []).forEach(function (img) {
       var fig = el('figure', 'gallery-item');
@@ -251,7 +265,7 @@
     }
     window.scrollTo(0, 0);
     // the project fades in piece by piece each time one is opened
-    Site.reveal(page.querySelectorAll('.detail-back, .detail-head, .gallery-item, .detail-body, .detail-nav'));
+    Site.reveal(page.querySelectorAll('.detail-back, .detail-head, .video, .gallery-item, .detail-body, .detail-nav'));
   }
 
   var restore = list ? setupReturn() : null;

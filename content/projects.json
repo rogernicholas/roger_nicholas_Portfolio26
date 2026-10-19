@@ -314,7 +314,11 @@
           "ratio": "1537 / 1152",
           "caption": ""
         }
-      ]
+      ],
+      "video": {
+        "vimeo": "488553290",
+        "ratio": "16 / 9"
+      }
     },
     {
       "slug": "olivova-hora",
@@ -335,7 +339,11 @@
           "ratio": "1558 / 1130",
           "caption": ""
         }
-      ]
+      ],
+      "video": {
+        "vimeo": "360318498",
+        "ratio": "16 / 9"
+      }
     },
     {
       "slug": "17-ovci-7-slepic",
@@ -356,7 +364,11 @@
           "ratio": "1800 / 1013",
           "caption": ""
         }
-      ]
+      ],
+      "video": {
+        "vimeo": "292478969",
+        "ratio": "16 / 9"
+      }
     },
     {
       "slug": "winevision",
