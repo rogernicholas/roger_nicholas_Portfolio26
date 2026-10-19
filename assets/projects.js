@@ -250,6 +250,8 @@
       page.appendChild(nav);
     }
     window.scrollTo(0, 0);
+    // the project fades in piece by piece each time one is opened
+    Site.reveal(page.querySelectorAll('.detail-back, .detail-head, .gallery-item, .detail-body, .detail-nav'));
   }
 
   var restore = list ? setupReturn() : null;

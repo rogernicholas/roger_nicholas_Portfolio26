@@ -5,8 +5,8 @@
 /* ---------- Tokens ---------- */
 :root {
   /* colour */
-  --paper: #F2EDE3;
-  --paper-cool: #E3E7EC;          /* the paper cools to this at the bottom of the screen */
+  --paper: #F5ECD9;               /* warm cream at the top of the screen */
+  --paper-cool: #E3E7EC;          /* and colder towards the bottom */
   --paper-deep: #E8E1D3;          /* default image placeholder */
   --ink: #1B1A17;
   --ink-soft: #5C574E;            /* secondary text, captions */
@@ -52,7 +52,7 @@ html {
   -webkit-text-size-adjust: 100%;
   background: var(--paper);
 }
-/* the paper turns a touch colder towards the bottom of the screen */
+/* the paper: warm cream under the header, turning colder towards the bottom of the screen */
 html::before {
   content: "";
   position: fixed;
@@ -61,7 +61,7 @@ html::before {
   height: 100vh;
   height: 100lvh;
   pointer-events: none;
-  background: linear-gradient(to bottom, var(--paper) 15%, var(--paper-cool));
+  background: linear-gradient(to bottom, var(--paper) var(--bar), var(--paper-cool));
 }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; } /* menu and nav links glide to their section */
