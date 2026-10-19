@@ -216,22 +216,23 @@
     head.appendChild(el('p', 'summary', p.summary));
     page.appendChild(head);
 
-    // the film itself, above the stills
+    // the film: its first still with a play button, opening it on Vimeo. A
+    // plain link instead of an embedded player keeps the page light.
+    var stills = p.images || [];
     if (p.video && p.video.vimeo) {
-      var film = el('div', 'video');
-      film.style.setProperty('--ratio', p.video.ratio || '16 / 9');
-      var frame = document.createElement('iframe');
-      frame.src = 'https://player.vimeo.com/video/' + encodeURIComponent(p.video.vimeo) + '?dnt=1&title=0&byline=0&portrait=0&color=2B3FA0';
-      frame.title = p.title;
-      frame.allow = 'autoplay; fullscreen; picture-in-picture';
-      frame.allowFullscreen = true;
-      frame.loading = 'lazy';
-      film.appendChild(frame);
+      var film = el('a', 'video');
+      film.href = 'https://vimeo.com/' + encodeURIComponent(p.video.vimeo);
+      film.target = '_blank';
+      film.rel = 'noopener';
+      film.setAttribute('aria-label', 'Watch ' + p.title + ' on Vimeo');
+      film.appendChild(Site.shot(stills[0]));
+      film.appendChild(el('span', 'play pill', '▶ Watch the film'));
       page.appendChild(film);
+      stills = stills.slice(1);
     }
 
     var gallery = el('div', 'gallery');
-    (p.images || []).forEach(function (img) {
+    stills.forEach(function (img) {
       var fig = el('figure', 'gallery-item');
       fig.appendChild(Site.shot(img));
       if (img.caption) fig.appendChild(el('figcaption', null, img.caption));

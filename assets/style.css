@@ -486,12 +486,25 @@ body::before { /* paints the band above the sticky header on phones */
   border-bottom: 1px solid var(--rule);
   font-size: var(--t-hero);
 }
+/* a film: its still, with a play button that opens it on Vimeo */
 .video {
+  position: relative;
   width: 100%;
-  aspect-ratio: var(--ratio, 16 / 9);
-  background: var(--ink);
+  display: block;
+  overflow: hidden;
 }
-.video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video .shot { width: 100%; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.video:hover .shot { transform: scale(1.03); }
+.video .play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.video:hover .play { background: var(--on-accent); color: var(--accent); }
 .gallery {
   width: 100%;
   display: flex;

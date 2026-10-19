@@ -316,8 +316,7 @@
         }
       ],
       "video": {
-        "vimeo": "488553290",
-        "ratio": "16 / 9"
+        "vimeo": "488553290"
       }
     },
     {
@@ -341,13 +340,12 @@
         }
       ],
       "video": {
-        "vimeo": "360318498",
-        "ratio": "16 / 9"
+        "vimeo": "360318498"
       }
     },
     {
-      "slug": "17-ovci-7-slepic",
-      "title": "17 ovcí, 7 slepic",
+      "slug": "16-sheep-7-hens",
+      "title": "16 sheep, 7 hens",
       "year": "2018",
       "field": "Film",
       "kind": "Short documentary",
@@ -359,15 +357,14 @@
       "links": [],
       "images": [
         {
-          "src": "images/film/17-ovci-7-slepic.jpg",
+          "src": "images/film/16-sheep-7-hens.jpg",
           "alt": "Black-and-white still: a hand on a sheep's head",
           "ratio": "1800 / 1013",
           "caption": ""
         }
       ],
       "video": {
-        "vimeo": "292478969",
-        "ratio": "16 / 9"
+        "vimeo": "292478969"
       }
     },
     {
