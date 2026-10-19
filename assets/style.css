@@ -8,8 +8,8 @@
   --accent: #2B3FA0; /* ultramarine */
   --on-ink: #F2EDE3;
   --on-ink-soft: #B9B1A3;
-  --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --body: "Hanken Grotesk", "Helvetica Neue", Helvetica, sans-serif;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --label-size: 13px;
   --label-track: 0.14em;
   --max: 1360px;
@@ -273,16 +273,22 @@ body::before { /* paints the band above the sticky header on phones */
   font-family: var(--display); font-weight: 400;
   font-size: clamp(40px, 5vw, 64px); line-height: 1;
 }
-.project-list { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 120px; }
-.project { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 28px; }
-.spread {
-  --row-h: 520px;
-  --row-gap: 20px;
-  display: flex; gap: var(--row-gap);
-  width: 100%;
+.project-list { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 80px; }
+.project-row { width: 100%; display: flex; align-items: flex-start; gap: 40px; }
+.tile { min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.tile .shot { width: 100%; transition: opacity 0.25s ease; }
+.tile:hover { color: inherit; }
+.tile:hover .shot { opacity: 0.85; }
+.tile-text { display: flex; flex-direction: column; gap: 6px; }
+.tile-text .meta { margin: 0; color: var(--accent); }
+.tile-text h3 {
+  margin: 0;
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1;
+  transition: color 0.2s ease;
 }
-.spread .shot { min-width: 0; transition: opacity 0.25s ease; }
-.spread:hover .shot { opacity: 0.88; }
+.tile:hover h3 { color: var(--accent); }
+.tile-text .summary { margin: 0; font-size: 15px; max-width: 48ch; }
 
 .shot {
   position: relative;
@@ -302,13 +308,10 @@ body::before { /* paints the band above the sticky header on phones */
   text-wrap: balance;
 }
 .project-text .summary { margin: 0; font-size: 16px; }
-.more { margin-top: 6px; padding-block: 12px; color: var(--accent); }
-.more:hover { opacity: 0.7; }
 .load-error { text-align: center; color: var(--ink-soft); }
 
 @media (max-width: 600px) {
-  .project-list { gap: 88px; }
-  .spread { --row-gap: 8px; }
+  .project-list { gap: 56px; }
 }
 
 /* Project page */
@@ -368,3 +371,13 @@ body::before { /* paints the band above the sticky header on phones */
 .menu-col .head { color: rgba(242, 237, 227, 0.7); }
 .menu a:hover, .site-footer a:hover { color: var(--on-ink); opacity: 0.7; }
 .foot-row { border-top-color: rgba(242, 237, 227, 0.35); }
+
+/* Sans display type: lighter weight, tighter tracking at large sizes */
+.name, .logo, .menu-main, .projects-title, .tile-text h3, .project-text h1, .project-text h3, .cta h2 {
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 96;
+}
+.logo { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; }
+.about p { font-weight: 350; letter-spacing: -0.01em; }
+.cta h2 em { font-style: normal; }

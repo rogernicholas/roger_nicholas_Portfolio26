@@ -1,5 +1,5 @@
 // Projects come from content/projects.json. The home page lists each one with its
-// first one to three images; project.html#<slug> shows one project expanded.
+// first image, laid out side by side in rows; project.html#<slug> shows one project expanded.
 (function () {
   var list = document.getElementById('project-list');
   var page = document.getElementById('project-page');
@@ -46,36 +46,52 @@
     return m;
   }
 
+  // Home: projects sit next to each other in rows, one to three per row depending
+  // on how wide their first image is. Every image in a row shares one height.
+  function tile(p) {
+    var img = (p.images || [])[0] || {};
+    var r = ratio(img.ratio);
+    var a = el('a', 'tile');
+    a.href = 'project.html#' + p.slug;
+    a.style.flex = r + ' 1 0';
+    a.appendChild(shot(img));
+    var text = el('div', 'tile-text');
+    text.appendChild(meta(p));
+    text.appendChild(el('h3', null, p.title));
+    text.appendChild(el('p', 'summary', p.summary));
+    a.appendChild(text);
+    return { node: a, r: r };
+  }
+
   function renderList(projects) {
+    var w = list.clientWidth;
+    var narrow = w < 640;
+    var gap = narrow ? 0 : 40;
+    var h = 340; // target image height for a row
+    var tiles = projects.map(tile);
+    var rows = [], row = [], sum = 0;
+    tiles.forEach(function (t) {
+      var wouldBe = (sum + t.r) * h + row.length * gap;
+      if (row.length && (narrow || row.length === 3 || wouldBe > w * 1.15)) {
+        rows.push({ items: row, sum: sum });
+        row = []; sum = 0;
+      }
+      row.push(t); sum += t.r;
+    });
+    if (row.length) rows.push({ items: row, sum: sum });
+
     list.textContent = '';
-    projects.forEach(function (p) {
-      var href = 'project.html#' + p.slug;
-      var art = el('article', 'project');
-      // the first one to three images, side by side at one shared height
-      var imgs = (p.images || []).slice(0, 3);
-      var spread = el('a', 'spread');
-      spread.href = href;
-      spread.setAttribute('aria-label', p.title);
-      var sum = 0;
-      imgs.forEach(function (img) {
-        var r = ratio(img.ratio);
-        sum += r;
-        var s = shot(img);
-        s.style.flex = r + ' 1 0';
-        spread.appendChild(s);
+    rows.forEach(function (rw) {
+      var line = el('div', 'project-row');
+      rw.items.forEach(function (t) {
+        // flex-grow below 1 on a lone tile would leave it short of the full width
+        if (rw.items.length === 1) t.node.style.flex = '1 1 0';
+        line.appendChild(t.node);
       });
-      // cap the row's height so a lone portrait image doesn't fill the screen
-      spread.style.maxWidth = 'calc(' + sum + ' * var(--row-h) + ' + (imgs.length - 1) + ' * var(--row-gap))';
-      art.appendChild(spread);
-      var text = el('div', 'project-text');
-      text.appendChild(meta(p));
-      text.appendChild(el('h3', null, p.title));
-      text.appendChild(el('p', 'summary', p.summary));
-      var more = el('a', 'more label', 'View project →');
-      more.href = href;
-      text.appendChild(more);
-      art.appendChild(text);
-      list.appendChild(art);
+      // a row that can't fill the width keeps a natural size, centred
+      var natural = rw.sum * h + (rw.items.length - 1) * gap;
+      if (!narrow && natural < w * 0.8) line.style.maxWidth = Math.round(natural * 1.15) + 'px';
+      list.appendChild(line);
     });
   }
 
@@ -125,7 +141,16 @@
     .then(function (data) {
       var projects = data.projects || [];
       if (!projects.length) return;
-      if (list) renderList(projects);
+      if (list) {
+        renderList(projects);
+        var lastW = list.clientWidth, timer;
+        window.addEventListener('resize', function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            if (list.clientWidth !== lastW) { lastW = list.clientWidth; renderList(projects); }
+          }, 150);
+        });
+      }
       if (page) {
         renderPage(projects);
         window.addEventListener('hashchange', function () { renderPage(projects); });
