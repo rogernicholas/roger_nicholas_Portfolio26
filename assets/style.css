@@ -393,3 +393,9 @@ body { font-size: 15px; }
   text-transform: none;
 }
 .menu-col .head { font-weight: 400; }
+
+/* Thin rules in project tiles: image | label + title | text */
+.tile { gap: 12px; }
+.tile-text { gap: 0; border-top: 1px solid var(--rule); padding-top: 10px; }
+.tile-text .meta { padding-bottom: 6px; }
+.tile-text h3 { padding-bottom: 10px; border-bottom: 1px solid var(--rule); margin-bottom: 10px; }
