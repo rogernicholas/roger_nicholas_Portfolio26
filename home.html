@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roger Nicholas, Painter and Screenwriter</title>
+<meta name="description" content="Large oils and screenwriting by Roger Nicholas, Prague.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="grain">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html" title="Back to the paper">Roger Nicholas</a>
+    <nav class="nav label" aria-label="Main">
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="pill label" type="button" id="menu-open" aria-expanded="false" aria-controls="menu">Menu</button>
+    </nav>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <div class="wrap">
+    <div class="menu-head">
+      <a class="logo" href="index.html">Roger Nicholas</a>
+      <button class="pill label" type="button" id="menu-close">Close</button>
+    </div>
+    <div class="menu-grid">
+      <nav class="menu-main" aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="index.html">Paint the page</a>
+      </nav>
+      <div class="menu-col label">
+        <span class="head">Work</span>
+        <a href="#work">Large oils, 120 × 160</a>
+        <a href="#work">Mexico series</a>
+        <a href="#projects">Screenwriting</a>
+        <a href="#projects">Exhibitions</a>
+      </div>
+      <div class="menu-col label">
+        <span class="head">Elsewhere</span>
+        <a href="https://instagram.com/rozero_n" target="_blank" rel="noopener">Instagram @rozero_n</a>
+        <a href="https://github.com/rogernicholas" target="_blank" rel="noopener">GitHub</a>
+        <span class="ph">[your email]</span>
+        <span>EN · CZ · ES</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="wrap about" id="about">
+    <p>I'm a painter and screenwriter based in Prague. I work in large oils, drawn to Mexican themes, solitude, our relationship to the environment and the inner world, and lately to men's softness and the way we hold each other.</p>
+    <p>Before painting took over, I trained in screenwriting at FAMU and wrote for television. I still tell stories, just with drips now.</p>
+  </section>
+
+  <section class="works" id="work" aria-labelledby="works-title">
+    <div class="wrap works-head">
+      <h2 class="label" id="works-title">Selected work</h2>
+    </div>
+    <!-- To add a work: copy one <figure>, put the file in images/, set --ratio to its width / height,
+         and swap the placeholder span for <img src="images/your-file.jpg" alt="..."> -->
+    <div class="track" id="track">
+      <div class="belt" id="belt">
+        <figure class="work" style="--ratio:4 / 5; --tone:#D9C9A8">
+          <div class="frame"><span class="ph-label label">[Painting]</span></div>
+          <figcaption><span class="ph">[Title]</span>, Oil on canvas, 120 × 160 cm</figcaption>
+        </figure>
+        <figure class="work" style="--ratio:16 / 9; --tone:#C7CDD3">
+          <div class="frame"><span class="ph-label label">[Film still]</span></div>
+          <figcaption><span class="ph">[Title]</span>, Space Analogs</figcaption>
+        </figure>
+        <figure class="work" style="--ratio:1 / 1; --tone:#E0B9A5">
+          <div class="frame"><span class="ph-label label">[Painting]</span></div>
+          <figcaption><span class="ph">[Title]</span>, Mexico series, 60 × 80 cm</figcaption>
+        </figure>
+        <figure class="work" style="--ratio:3 / 2; --tone:#BFC7AE">
+          <div class="frame"><span class="ph-label label">[Photo]</span></div>
+          <figcaption><span class="ph">[Title]</span>, Prague</figcaption>
+        </figure>
+        <figure class="work" style="--ratio:3 / 4; --tone:#E3CF98">
+          <div class="frame"><span class="ph-label label">[Painting]</span></div>
+          <figcaption><span class="ph">[Title]</span>, Oil on canvas, 120 × 160 cm</figcaption>
+        </figure>
+        <figure class="work" style="--ratio:2 / 3; --tone:#CDB6C4">
+          <div class="frame"><span class="ph-label label">[Photo]</span></div>
+          <figcaption><span class="ph">[Title]</span>, Oaxaca</figcaption>
+        </figure>
+        <figure class="work" style="--ratio:4 / 3; --tone:#D3C4B5">
+          <div class="frame"><span class="ph-label label">[Painting]</span></div>
+          <figcaption><span class="ph">[Title]</span>, Judafest, 2026</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap projects" id="projects">
+    <div class="projects-head">
+      <h2>Projects</h2>
+      <span class="label">Painting · Film · Television</span>
+    </div>
+    <a class="row" href="#projects">
+      <span class="y">2026</span>
+      <span class="t">Space Analogs</span>
+      <span class="d">Feature film co-written with Jules Roux. A married couple joins a year-long Mars analog mission, and isolation pulls the crew apart.</span>
+      <span class="k label">Feature · In development</span>
+    </a>
+    <a class="row" href="#projects">
+      <span class="y">2026</span>
+      <span class="t">Judafest</span>
+      <span class="d">Paintings shown in a Prague synagogue during the Judafest festival, October 2026.</span>
+      <span class="k label">Exhibition</span>
+    </a>
+    <a class="row" href="#projects">
+      <span class="y">2026</span>
+      <span class="t">Mexico series</span>
+      <span class="d">A looser series of 60 × 80 cm oils, developed from time in Oaxaca and Mexico City.</span>
+      <span class="k label">Painting · Ongoing</span>
+    </a>
+    <a class="row" href="#projects">
+      <span class="y ph">[Year]</span>
+      <span class="t">Farma Česko</span>
+      <span class="d">Episodic scripts, production structure and the live finale for the reality show, produced by Joy Department.</span>
+      <span class="k label">Television</span>
+    </a>
+    <a class="row" href="#projects">
+      <span class="y">Ongoing</span>
+      <span class="t">Large oils</span>
+      <span class="d">120 × 160 cm canvases on solitude, softness and the inner world. Enquire for availability.</span>
+      <span class="k label">Painting</span>
+    </a>
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Interested in a painting, a residency or a <em>script?</em></h2>
+      <a class="pill label" href="https://instagram.com/rozero_n" target="_blank" rel="noopener">Get in touch</a>
+    </div>
+    <div class="foot-row label">
+      <span>Prague, CZ</span>
+      <a href="https://instagram.com/rozero_n" target="_blank" rel="noopener">Instagram @rozero_n</a>
+      <span class="ph">[your email]</span>
+      <span>© 2026 Roger Nicholas</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/home.js"></script>
+</body>
+</html>
