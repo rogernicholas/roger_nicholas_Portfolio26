@@ -1,5 +1,5 @@
 // Projects come from content/projects.json. The home page lists each one with its
-// cover image; project.html#<slug> shows one project expanded.
+// first one to three images; project.html#<slug> shows one project expanded.
 (function () {
   var list = document.getElementById('project-list');
   var page = document.getElementById('project-page');
@@ -33,6 +33,12 @@
     return box;
   }
 
+  function ratio(r) {
+    var parts = String(r || '4 / 5').split('/');
+    var v = parseFloat(parts[0]) / parseFloat(parts[1] || 1);
+    return isFinite(v) && v > 0 ? v : 0.8;
+  }
+
   function meta(p) {
     var m = el('p', 'meta label');
     m.appendChild(el('span', null, p.year));
@@ -45,11 +51,22 @@
     projects.forEach(function (p) {
       var href = 'project.html#' + p.slug;
       var art = el('article', 'project');
-      var cover = el('a', 'cover');
-      cover.href = href;
-      cover.setAttribute('aria-label', p.title);
-      cover.appendChild(shot(p.cover));
-      art.appendChild(cover);
+      // the first one to three images, side by side at one shared height
+      var imgs = (p.images || []).slice(0, 3);
+      var spread = el('a', 'spread');
+      spread.href = href;
+      spread.setAttribute('aria-label', p.title);
+      var sum = 0;
+      imgs.forEach(function (img) {
+        var r = ratio(img.ratio);
+        sum += r;
+        var s = shot(img);
+        s.style.flex = r + ' 1 0';
+        spread.appendChild(s);
+      });
+      // cap the row's height so a lone portrait image doesn't fill the screen
+      spread.style.maxWidth = 'calc(' + sum + ' * var(--row-h) + ' + (imgs.length - 1) + ' * var(--row-gap))';
+      art.appendChild(spread);
       var text = el('div', 'project-text');
       text.appendChild(meta(p));
       text.appendChild(el('h3', null, p.title));
@@ -77,7 +94,7 @@
     page.appendChild(head);
 
     var gallery = el('div', 'gallery');
-    (p.images && p.images.length ? p.images : [p.cover]).forEach(function (img) {
+    (p.images || []).forEach(function (img) {
       var fig = el('figure', 'gallery-item');
       fig.appendChild(shot(img));
       if (img.caption) fig.appendChild(el('figcaption', null, img.caption));

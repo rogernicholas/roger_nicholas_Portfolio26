@@ -9,11 +9,31 @@
       "body": [
         "[Longer description of the project: what it is about, where it stands, who it is made with.]"
       ],
-      "cover": { "src": "", "alt": "", "ratio": "16 / 9", "tone": "#C7CDD3", "label": "Film still" },
       "images": [
-        { "src": "", "alt": "", "ratio": "16 / 9", "tone": "#C7CDD3", "label": "Film still", "caption": "" },
-        { "src": "", "alt": "", "ratio": "4 / 5", "tone": "#B9C2CC", "label": "Still", "caption": "" },
-        { "src": "", "alt": "", "ratio": "4 / 5", "tone": "#D3D8DD", "label": "Still", "caption": "" }
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "16 / 9",
+          "tone": "#C7CDD3",
+          "label": "Film still",
+          "caption": ""
+        },
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "4 / 5",
+          "tone": "#B9C2CC",
+          "label": "Still",
+          "caption": ""
+        },
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "4 / 5",
+          "tone": "#D3D8DD",
+          "label": "Still",
+          "caption": ""
+        }
       ]
     },
     {
@@ -25,10 +45,23 @@
       "body": [
         "[Longer description of the exhibition: the space, the works shown, dates.]"
       ],
-      "cover": { "src": "", "alt": "", "ratio": "3 / 2", "tone": "#CFC3AE", "label": "Installation photo" },
       "images": [
-        { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#D9C9A8", "label": "Painting", "caption": "" },
-        { "src": "", "alt": "", "ratio": "3 / 2", "tone": "#CFC3AE", "label": "Installation photo", "caption": "" }
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "3 / 4",
+          "tone": "#D9C9A8",
+          "label": "Painting",
+          "caption": ""
+        },
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "3 / 2",
+          "tone": "#CFC3AE",
+          "label": "Installation photo",
+          "caption": ""
+        }
       ]
     },
     {
@@ -40,11 +73,31 @@
       "body": [
         "[Longer description of the series.]"
       ],
-      "cover": { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#E3CF98", "label": "Painting" },
       "images": [
-        { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#E3CF98", "label": "Painting", "caption": "" },
-        { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#E0B9A5", "label": "Painting", "caption": "" },
-        { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#CDB6C4", "label": "Painting", "caption": "" }
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "3 / 4",
+          "tone": "#E3CF98",
+          "label": "Painting",
+          "caption": ""
+        },
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "3 / 4",
+          "tone": "#E0B9A5",
+          "label": "Painting",
+          "caption": ""
+        },
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "3 / 4",
+          "tone": "#CDB6C4",
+          "label": "Painting",
+          "caption": ""
+        }
       ]
     },
     {
@@ -56,9 +109,15 @@
       "body": [
         "[Longer description of your work on the show.]"
       ],
-      "cover": { "src": "", "alt": "", "ratio": "16 / 9", "tone": "#BFC7AE", "label": "Still" },
       "images": [
-        { "src": "", "alt": "", "ratio": "16 / 9", "tone": "#BFC7AE", "label": "Still", "caption": "" }
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "16 / 9",
+          "tone": "#BFC7AE",
+          "label": "Still",
+          "caption": ""
+        }
       ]
     },
     {
@@ -70,10 +129,23 @@
       "body": [
         "[Longer description of the large oils.]"
       ],
-      "cover": { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#D3C4B5", "label": "Painting" },
       "images": [
-        { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#D3C4B5", "label": "Painting", "caption": "" },
-        { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#D9C9A8", "label": "Painting", "caption": "" }
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "3 / 4",
+          "tone": "#D3C4B5",
+          "label": "Painting",
+          "caption": ""
+        },
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "3 / 4",
+          "tone": "#D9C9A8",
+          "label": "Painting",
+          "caption": ""
+        }
       ]
     }
   ]

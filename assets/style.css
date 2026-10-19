@@ -275,9 +275,14 @@ body::before { /* paints the band above the sticky header on phones */
 }
 .project-list { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 120px; }
 .project { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 28px; }
-.cover { display: block; max-width: 100%; }
-.cover .shot { height: clamp(240px, 40vw, 520px); transition: opacity 0.25s ease; }
-.cover:hover .shot { opacity: 0.88; }
+.spread {
+  --row-h: 520px;
+  --row-gap: 20px;
+  display: flex; gap: var(--row-gap);
+  width: 100%;
+}
+.spread .shot { min-width: 0; transition: opacity 0.25s ease; }
+.spread:hover .shot { opacity: 0.88; }
 
 .shot {
   position: relative;
@@ -303,8 +308,7 @@ body::before { /* paints the band above the sticky header on phones */
 
 @media (max-width: 600px) {
   .project-list { gap: 88px; }
-  .cover { width: 100%; }
-  .cover .shot { width: 100%; height: auto; }
+  .spread { --row-gap: 8px; }
 }
 
 /* Project page */
