@@ -1,28 +1,63 @@
-// Projects come from content/projects.json. The home page lays them out side by
-// side in rows; project.html#<slug> shows one project expanded. Both pages also
-// get the list of projects in the menu.
+// Projects come from content/projects.json, newest first. The home page lays them
+// out side by side in rows with a field filter above; project.html#<slug> shows
+// one project expanded.
 (function () {
   var list = document.getElementById('project-list');
   var page = document.getElementById('project-page');
-  var menuList = document.getElementById('menu-projects');
-  if (!list && !page && !menuList) return;
+  if (!list && !page) return;
   var el = Site.el;
 
   function link(p) { return 'project.html#' + p.slug; }
 
-  function meta(p) {
+  // "2026 · Film", plus the kind on the project page
+  function meta(p, withKind) {
     var m = el('p', 'meta label');
     m.appendChild(el('span', null, p.year));
-    if (p.kind) m.appendChild(document.createTextNode(' · ' + p.kind));
+    if (p.field) m.appendChild(document.createTextNode(' · ' + p.field));
+    if (withKind && p.kind) m.appendChild(document.createTextNode(' · ' + p.kind));
     return m;
   }
 
-  function renderMenu(projects) {
-    projects.forEach(function (p) {
-      var a = el('a', null, p.title);
-      a.href = link(p);
-      menuList.appendChild(a);
+  // newest first; years that aren't a number ("Ongoing") go last, in file order
+  function byYear(projects) {
+    return projects
+      .map(function (p, i) { return { p: p, y: parseInt(p.year, 10) || 0, i: i }; })
+      .sort(function (a, b) { return b.y - a.y || a.i - b.i; })
+      .map(function (x) { return x.p; });
+  }
+
+  // Home: the field filter. The choice is kept in the address (?field=Film) so a
+  // filtered view can be shared, and the menu's Fields links set it directly.
+  function setupFilters(projects) {
+    var buttons = document.querySelectorAll('.filters button');
+    var field = new URLSearchParams(location.search).get('field') || '';
+    var shown = function () {
+      return projects.filter(function (p) { return !field || p.field === field; });
+    };
+    var mark = function () {
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.field === field)); });
+    };
+    var set = function (f) {
+      if (f === field) return;
+      field = f;
+      mark();
+      history.replaceState(null, '', (f ? '?field=' + encodeURIComponent(f) : location.pathname) + '#projects');
+      list.classList.add('fading');
+      setTimeout(function () { renderList(shown()); list.classList.remove('fading'); }, 250);
+    };
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { set(b.dataset.field); });
     });
+    document.querySelectorAll('.menu a[data-field]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        set(a.dataset.field);
+        // after the menu has closed and the page can scroll again
+        setTimeout(function () { document.getElementById('projects').scrollIntoView(); }, 0);
+      });
+    });
+    mark();
+    return shown;
   }
 
   // Home: one to three projects per row depending on how wide each one's first
@@ -59,6 +94,7 @@
     if (row.length) rows.push({ items: row, sum: sum });
 
     list.textContent = '';
+    if (!projects.length) list.appendChild(el('p', 'load-error', 'Nothing here yet.'));
     rows.forEach(function (rw) {
       var line = el('div', 'project-row');
       rw.items.forEach(function (t) {
@@ -82,7 +118,7 @@
     page.textContent = '';
 
     var head = el('header', 'detail-head');
-    head.appendChild(meta(p));
+    head.appendChild(meta(p, true));
     head.appendChild(el('h1', null, p.title));
     head.appendChild(el('p', 'summary', p.summary));
     page.appendChild(head);
@@ -118,16 +154,16 @@
 
   Site.load('content/projects.json')
     .then(function (data) {
-      var projects = data.projects || [];
+      var projects = byYear(data.projects || []);
       if (!projects.length) return;
-      if (menuList) renderMenu(projects);
       if (list) {
-        renderList(projects);
+        var shown = setupFilters(projects);
+        renderList(shown());
         var lastW = list.clientWidth, timer;
         window.addEventListener('resize', function () {
           clearTimeout(timer);
           timer = setTimeout(function () {
-            if (list.clientWidth !== lastW) { lastW = list.clientWidth; renderList(projects); }
+            if (list.clientWidth !== lastW) { lastW = list.clientWidth; renderList(shown()); }
           }, 150);
         });
       }

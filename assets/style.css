@@ -369,6 +369,31 @@ body::before { /* paints the band above the sticky header on phones */
 .tile-text .summary { max-width: 48ch; }
 .load-error { color: var(--ink-soft); text-align: center; }
 
+/* field filter under the Projects title */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-1) var(--s-3);
+  margin-top: calc(var(--s-3) - var(--s-5));
+}
+.filters button {
+  padding: 6px 2px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  color: var(--ink-soft);
+  font-family: var(--f-display);
+  font-size: var(--t-nav);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.filters button:hover { color: var(--accent); }
+.filters button[aria-pressed="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.project-list { transition: opacity 0.25s ease; }
+.project-list.fading { opacity: 0; }
+
 /* ---------- Project page ---------- */
 .detail {
   max-width: var(--column);

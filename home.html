@@ -44,9 +44,11 @@
         <a href="home.html#contact">Contact</a>
         <a href="index.html">Paint the page</a>
       </nav>
-      <div class="menu-col" id="menu-projects">
-        <span class="head">Projects</span>
-        <!-- filled from content/projects.json -->
+      <div class="menu-col">
+        <span class="head">Fields</span>
+        <a href="home.html?field=Painting#projects" data-field="Painting">Painting</a>
+        <a href="home.html?field=Film#projects" data-field="Film">Film</a>
+        <a href="home.html?field=Web#projects" data-field="Web">Web</a>
       </div>
       <div class="menu-col">
         <span class="head">Elsewhere</span>
@@ -76,6 +78,13 @@
   <!-- Projects: filled from content/projects.json -->
   <section class="wrap projects" id="projects">
     <h2 class="projects-title">Projects</h2>
+    <!-- Filters match each project's "field" in content/projects.json -->
+    <nav class="filters" aria-label="Filter projects">
+      <button type="button" data-field="" aria-pressed="true">All</button>
+      <button type="button" data-field="Painting" aria-pressed="false">Painting</button>
+      <button type="button" data-field="Film" aria-pressed="false">Film</button>
+      <button type="button" data-field="Web" aria-pressed="false">Web</button>
+    </nav>
     <div class="project-list" id="project-list"></div>
   </section>
 </main>

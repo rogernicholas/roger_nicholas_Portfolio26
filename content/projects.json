@@ -34,7 +34,8 @@
           "label": "Still",
           "caption": ""
         }
-      ]
+      ],
+      "field": "Film"
     },
     {
       "slug": "judafest",
@@ -62,7 +63,8 @@
           "label": "Installation photo",
           "caption": ""
         }
-      ]
+      ],
+      "field": "Painting"
     },
     {
       "slug": "mexico-series",
@@ -98,6 +100,28 @@
           "label": "Painting",
           "caption": ""
         }
+      ],
+      "field": "Painting"
+    },
+    {
+      "slug": "web-studio",
+      "title": "[Web project]",
+      "year": "2025",
+      "kind": "Website",
+      "field": "Web",
+      "summary": "[One line on a site you designed or built.]",
+      "body": [
+        "[What it is, who it was for, what you did.]"
+      ],
+      "images": [
+        {
+          "src": "",
+          "alt": "",
+          "ratio": "16 / 10",
+          "tone": "#C9D2E3",
+          "label": "Screenshot",
+          "caption": ""
+        }
       ]
     },
     {
@@ -118,7 +142,8 @@
           "label": "Still",
           "caption": ""
         }
-      ]
+      ],
+      "field": "Film"
     },
     {
       "slug": "large-oils",
@@ -146,7 +171,8 @@
           "label": "Painting",
           "caption": ""
         }
-      ]
+      ],
+      "field": "Painting"
     }
   ]
 }

@@ -42,11 +42,13 @@ Each entry in `works` is one image with `title` and `caption`, shown underneath 
 Each project has:
 
 - `slug`: the short name used in its link, lowercase with dashes (e.g. `mexico-series`). Change it and old links stop working.
-- `title`, `year`, `kind`, `summary`: shown on the home page and at the top of the project page.
+- `title`, `year`, `summary`: shown on the home page and at the top of the project page.
+- `field`: `Painting`, `Film` or `Web`. This is what the filters above the projects and the Fields in the menu use.
+- `kind`: a short description shown on the project page next to the year and field (e.g. `Feature · In development`).
 - `body`: a list of paragraphs for the project page.
 - `images`: all images for the project page, each with an optional `caption`. The first one is the project's image on the home page, so put the strongest first.
 
-The order of projects in the file is the order on the site and in the menu.
+Projects are shown newest first by `year`; projects without a number for the year (e.g. `Ongoing`) come last, in file order.
 
 ## Code
 
