@@ -30,6 +30,10 @@ window.Site = (function () {
       i.alt = img.alt || '';
       i.loading = 'lazy';
       i.decoding = 'async';
+      // no ratio given: take the shape from the file once it has loaded
+      if (!img.ratio) i.addEventListener('load', function () {
+        box.style.setProperty('--ratio', i.naturalWidth + ' / ' + i.naturalHeight);
+      });
       box.appendChild(i);
     } else {
       var ph = el('span', 'ph-label label');
@@ -37,6 +41,34 @@ window.Site = (function () {
       box.appendChild(ph);
     }
     return box;
+  }
+
+  // Fade elements up as they come into view, a little after one another when
+  // several arrive together. Without IntersectionObserver they simply show.
+  var observer = 'IntersectionObserver' in window && new IntersectionObserver(function (entries) {
+    entries
+      .filter(function (e) { return e.isIntersecting; })
+      .sort(function (a, b) {
+        return a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left;
+      })
+      .forEach(function (e, i) {
+        e.target.style.setProperty('--delay', Math.min(i, 6) * 90 + 'ms');
+        e.target.classList.add('shown');
+        observer.unobserve(e.target);
+      });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  function reveal(nodes) {
+    if (!observer) return;
+    // hide them at once rather than fading out first, then watch for them
+    Array.prototype.forEach.call(nodes, function (n) {
+      n.style.transition = 'none';
+      n.classList.add('reveal');
+    });
+    void document.body.offsetWidth;
+    Array.prototype.forEach.call(nodes, function (n) {
+      n.style.transition = '';
+      observer.observe(n);
+    });
   }
 
   var cache = {};
@@ -94,5 +126,8 @@ window.Site = (function () {
     }, { passive: false });
   }
 
-  return { el: el, ratio: ratio, shot: shot, load: load };
+  // the CV fades in entry by entry
+  reveal(document.querySelectorAll('.cv-head, .cv section > h2, .cv-list > li'));
+
+  return { el: el, ratio: ratio, shot: shot, load: load, reveal: reveal };
 })();

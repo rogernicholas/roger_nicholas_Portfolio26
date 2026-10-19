@@ -111,57 +111,6 @@
       ]
     },
     {
-      "slug": "drawings",
-      "title": "Drawings",
-      "year": "",
-      "field": "Painting",
-      "kind": "",
-      "summary": "Sketchbook pages and life drawing studies.",
-      "body": [
-        "Studies from the sketchbook and from regular life drawing sessions, with poses of 4 to 15 minutes, in pencil, pastel and watercolour."
-      ],
-      "tech": "",
-      "links": [],
-      "images": [
-        {
-          "src": "images/painting/drawing-01.jpg",
-          "alt": "Drawing from the sketchbook",
-          "ratio": "1600 / 1138",
-          "caption": ""
-        },
-        {
-          "src": "images/painting/drawing-02.jpg",
-          "alt": "Drawing from the sketchbook",
-          "ratio": "1195 / 1600",
-          "caption": ""
-        },
-        {
-          "src": "images/painting/drawing-03.jpg",
-          "alt": "Drawing from the sketchbook",
-          "ratio": "1097 / 1600",
-          "caption": ""
-        },
-        {
-          "src": "images/painting/drawing-04.jpg",
-          "alt": "Drawing from the sketchbook",
-          "ratio": "1080 / 1600",
-          "caption": ""
-        },
-        {
-          "src": "images/painting/drawing-05.jpg",
-          "alt": "Drawing from the sketchbook",
-          "ratio": "1200 / 1600",
-          "caption": ""
-        },
-        {
-          "src": "images/painting/drawing-06.jpg",
-          "alt": "Drawing from the sketchbook",
-          "ratio": "1209 / 1600",
-          "caption": ""
-        }
-      ]
-    },
-    {
       "slug": "space-analogues",
       "title": "Space Analogues",
       "year": "2026",
@@ -201,12 +150,12 @@
     {
       "slug": "orange-lights",
       "title": "Orange lights",
-      "year": "",
+      "year": "Coming soon",
       "field": "Film",
       "kind": "Short film · 15 min",
       "summary": "Final version written and directed by Jules Roux, based on my subject and a rough first version.",
       "body": [
-        "A 15-minute short film. The final version was written and directed by Jules Roux, based on my subject and a rough first version."
+        "A 15-minute short film, in the works and coming out soon. The final version was written and directed by Jules Roux, based on my subject and a rough first version."
       ],
       "tech": "",
       "links": [],
@@ -226,9 +175,9 @@
       ]
     },
     {
-      "slug": "all-that-lies-beneath",
-      "title": "All that lies beneath",
-      "year": "2025",
+      "slug": "all-what-lies-beneath",
+      "title": "All what lies beneath",
+      "year": "2024",
       "field": "Film",
       "kind": "Short film · 25 min",
       "summary": "Co-written with director Jules Roux, based on his subject. Featured at FAMUFEST.",
@@ -240,20 +189,20 @@
       "links": [],
       "images": [
         {
-          "src": "images/film/all-that-lies-beneath-1.jpg",
-          "alt": "Still from All that lies beneath: a young man in an underground passage",
+          "src": "images/film/all-what-lies-beneath-1.jpg",
+          "alt": "Still from All what lies beneath: a young man in an underground passage",
           "ratio": "1800 / 989",
           "caption": ""
         },
         {
-          "src": "images/film/all-that-lies-beneath-2.jpg",
-          "alt": "Still from All that lies beneath: a figure in a dark tunnel",
+          "src": "images/film/all-what-lies-beneath-2.jpg",
+          "alt": "Still from All what lies beneath: a figure in a dark tunnel",
           "ratio": "1800 / 972",
           "caption": ""
         },
         {
-          "src": "images/film/all-that-lies-beneath-3.jpg",
-          "alt": "Still from All that lies beneath: an older man at a desk",
+          "src": "images/film/all-what-lies-beneath-3.jpg",
+          "alt": "Still from All what lies beneath: an older man at a desk",
           "ratio": "1800 / 1019",
           "caption": ""
         }
@@ -296,7 +245,7 @@
     {
       "slug": "i-want-to-die-as-a-martyr",
       "title": "I want to die as a martyr",
-      "year": "2025",
+      "year": "2020",
       "field": "Film",
       "kind": "Short film · 8 min",
       "summary": "Co-written with documentarist Juliana Moska. Produced by FAMU and shown on ČT art.",
@@ -421,12 +370,25 @@
       ],
       "tech": "",
       "links": [],
-      "images": []
+      "images": [
+        {
+          "src": "images/web/winevision-1.jpg",
+          "alt": "The website's opening section: the headline Rukopis v každé lahvi over a painted landscape",
+          "ratio": "1800 / 982",
+          "caption": ""
+        },
+        {
+          "src": "images/web/winevision-2.jpg",
+          "alt": "A text section headed Živá vína z živé půdy",
+          "ratio": "920 / 1212",
+          "caption": ""
+        }
+      ]
     },
     {
       "slug": "natalie-bergmann",
       "title": "Natalie Bergmann",
-      "year": "",
+      "year": "2026",
       "field": "Web",
       "kind": "Psychologist website",
       "summary": "A lightweight one-page website for a family psychologist, in Czech and English.",
@@ -453,7 +415,7 @@
     {
       "slug": "hana-nicholas",
       "title": "Hana Nicholas",
-      "year": "",
+      "year": "2025",
       "field": "Web",
       "kind": "English tutor website",
       "summary": "A one-page website for an English tutor, with booking through Calendly.",
@@ -507,7 +469,7 @@
     {
       "slug": "strongr",
       "title": "Strongr",
-      "year": "",
+      "year": "2026",
       "field": "Web",
       "kind": "Workout tracker app",
       "summary": "An offline Android app for logging workouts and following progress.",

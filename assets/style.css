@@ -6,6 +6,7 @@
 :root {
   /* colour */
   --paper: #F2EDE3;
+  --paper-cool: #E3E7EC;          /* the paper cools to this at the bottom of the screen */
   --paper-deep: #E8E1D3;          /* default image placeholder */
   --ink: #1B1A17;
   --ink-soft: #5C574E;            /* secondary text, captions */
@@ -47,7 +48,21 @@
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--paper);
+}
+/* the paper turns a touch colder towards the bottom of the screen */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: 100vh;
+  height: 100lvh;
+  pointer-events: none;
+  background: linear-gradient(to bottom, var(--paper) 15%, var(--paper-cool));
+}
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; } /* menu and nav links glide to their section */
 }
@@ -55,11 +70,24 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--paper);
   color: var(--ink);
   font-family: var(--f-text);
   font-size: var(--t-text);
   line-height: 1.6;
+  transition: opacity 0.3s ease;
+}
+/* coming back to the projects list: hidden until it is back at the same spot */
+.returning body { opacity: 0; transition: none; }
+
+/* fade up as they come into view (Site.reveal) */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(var(--s-3));
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--delay, 0s);
+  }
+  .reveal.shown { opacity: 1; transform: none; }
 }
 
 h1, h2, h3 {
@@ -436,6 +464,16 @@ body::before { /* paints the band above the sticky header on phones */
   gap: var(--s-5);
   padding-block: var(--s-6) var(--s-7);
 }
+.detail-back {
+  align-self: flex-start;
+  margin-block: calc(-1 * var(--s-5)) calc(-1 * var(--s-3));
+  padding-block: 10px;
+  color: var(--accent);
+  font-family: var(--f-display);
+  font-size: var(--t-nav);
+  font-weight: 500;
+}
+.detail-back:hover { opacity: 0.7; }
 .detail-head {
   width: 100%;
   max-width: 60ch;

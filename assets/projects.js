@@ -17,15 +17,79 @@
   }
 
   // newest first by the latest year mentioned ("2023 – 2026" counts as 2026);
-  // projects without a year go last, in file order
+  // a year with no number in it ("Coming soon") goes first, projects without a
+  // year go last, in file order
   function byYear(projects) {
     return projects
       .map(function (p, i) {
-        var years = String(p.year || '').match(/\d{4}/g) || [0];
-        return { p: p, y: Math.max.apply(null, years.map(Number)), i: i };
+        var years = String(p.year || '').match(/\d{4}/g);
+        var y = years ? Math.max.apply(null, years.map(Number)) : p.year ? Infinity : 0;
+        return { p: p, y: y, i: i };
       })
       .sort(function (a, b) { return b.y - a.y || a.i - b.i; })
       .map(function (x) { return x.p; });
+  }
+
+  // Coming back to the home page, by the browser's back button or the project
+  // page's "All projects", lands where the visitor left the list, filter
+  // included. The spot is kept for this tab only; without storage the links
+  // simply open the projects section.
+  var SPOT = 'home-spot', RETURNING = 'home-return';
+  function recall(key) { try { return sessionStorage.getItem(key); } catch (e) { return null; } }
+  function remember(key, value) {
+    try { value == null ? sessionStorage.removeItem(key) : sessionStorage.setItem(key, value); } catch (e) {}
+  }
+  function spot() {
+    try { return JSON.parse(recall(SPOT)); } catch (e) { return null; }
+  }
+  function here() { return location.pathname + location.search; }
+
+  function backLink(text, cls) {
+    var a = el('a', cls, text);
+    a.href = 'home.html#projects';
+    a.addEventListener('click', function (e) {
+      var s = spot();
+      if (!s || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      remember(RETURNING, '1');
+      location.href = s.url;
+    });
+    return a;
+  }
+
+  // Home: hide the page until the list is drawn and scrolled back to the spot,
+  // so it doesn't flash at the top first.
+  function setupReturn() {
+    var nav = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]) || {};
+    var asked = recall(RETURNING) === '1';
+    remember(RETURNING, null);
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.addEventListener('pagehide', function () {
+      remember(SPOT, JSON.stringify({ y: Math.round(window.scrollY), url: here() }));
+    });
+    var s = spot();
+    if (!s || s.url !== here() || !(asked || nav.type === 'back_forward' || nav.type === 'reload')) return null;
+    var root = document.documentElement;
+    var done = function () { root.classList.remove('returning'); };
+    root.classList.add('returning');
+    setTimeout(done, 1500); // never stay hidden
+    return function () {
+      (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
+        var max = root.scrollHeight - window.innerHeight;
+        window.scrollTo({ top: Math.min(s.y, max), behavior: 'instant' });
+        done();
+      });
+    };
+  }
+
+  // Home: arriving at home.html#projects (or #contact) from another page, the
+  // browser heads for the section before the carousel, the list and the fonts
+  // have pushed it down, so glide there again once they're in.
+  function settleHash() {
+    var target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!target) return;
+    Promise.all([Site.load('content/work.json').catch(function () {}), document.fonts && document.fonts.ready])
+      .then(function () { target.scrollIntoView(); });
   }
 
   // Home: the field filter. The choice is kept in the address (?field=Film) so a
@@ -45,7 +109,7 @@
       mark();
       history.replaceState(null, '', (f ? '?field=' + encodeURIComponent(f) : location.pathname) + '#projects');
       list.classList.add('fading');
-      setTimeout(function () { renderList(shown()); list.classList.remove('fading'); }, 250);
+      setTimeout(function () { renderList(shown(), true); list.classList.remove('fading'); }, 250);
     };
     buttons.forEach(function (b) {
       b.addEventListener('click', function () { set(b.dataset.field); });
@@ -95,7 +159,8 @@
     return ol;
   }
 
-  function renderList(projects) {
+  // animate: tiles fade in as they come into view (not when the window resizes)
+  function renderList(projects, animate) {
     var more = projects.filter(function (p) { return !(p.images && p.images.length); });
     projects = projects.filter(function (p) { return p.images && p.images.length; });
     var w = list.clientWidth;
@@ -133,6 +198,7 @@
       list.appendChild(line);
     });
     if (more.length) list.appendChild(renderMore(more));
+    if (animate) Site.reveal(list.querySelectorAll('.tile, .project-more li'));
   }
 
   function renderPage(projects) {
@@ -142,6 +208,7 @@
     var p = projects[k];
     document.title = p.title + ', Roger Nicholas';
     page.textContent = '';
+    page.appendChild(backLink('← All projects', 'detail-back'));
 
     var head = el('header', 'detail-head');
     head.appendChild(meta(p, true));
@@ -177,7 +244,7 @@
       var prev = projects[(k - 1 + projects.length) % projects.length];
       var next = projects[(k + 1) % projects.length];
       var a1 = el('a', null, '← ' + prev.title); a1.href = link(prev);
-      var a2 = el('a', null, 'All projects'); a2.href = 'home.html#projects';
+      var a2 = backLink('All projects');
       var a3 = el('a', null, next.title + ' →'); a3.href = link(next);
       nav.appendChild(a1); nav.appendChild(a2); nav.appendChild(a3);
       page.appendChild(nav);
@@ -185,13 +252,16 @@
     window.scrollTo(0, 0);
   }
 
+  var restore = list ? setupReturn() : null;
+
   Site.load('content/projects.json')
     .then(function (data) {
       var projects = byYear(data.projects || []);
       if (!projects.length) return;
       if (list) {
         var shown = setupFilters(projects);
-        renderList(shown());
+        renderList(shown(), true);
+        if (restore) restore(); else settleHash();
         var lastW = list.clientWidth, timer;
         window.addEventListener('resize', function () {
           clearTimeout(timer);
@@ -206,6 +276,7 @@
       }
     })
     .catch(function () {
+      document.documentElement.classList.remove('returning');
       var target = list || page;
       if (target) target.appendChild(el('p', 'load-error', 'Projects could not be loaded. Refresh the page to try again.'));
     });

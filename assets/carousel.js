@@ -16,10 +16,10 @@
     return fig;
   }
 
-  function start() {
-    // copy the works once so the belt can loop without a seam
-    Array.prototype.slice.call(belt.children).forEach(function (fig) {
-      var copy = fig.cloneNode(true);
+  function start(works) {
+    // a second copy of the works so the belt can loop without a seam
+    works.forEach(function (w) {
+      var copy = figure(w);
       copy.setAttribute('aria-hidden', 'true');
       belt.appendChild(copy);
     });
@@ -45,8 +45,9 @@
 
   Site.load('content/work.json')
     .then(function (data) {
-      (data.works || []).forEach(function (w) { belt.appendChild(figure(w)); });
-      if (belt.children.length) start();
+      var works = data.works || [];
+      works.forEach(function (w) { belt.appendChild(figure(w)); });
+      if (works.length) start(works);
     })
     .catch(function () {
       track.appendChild(el('p', 'load-error', 'The work could not be loaded. Refresh the page to try again.'));

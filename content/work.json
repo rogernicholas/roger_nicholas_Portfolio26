@@ -1,81 +1,74 @@
 {
   "works": [
     {
-      "src": "images/painting/what-did-you-find.jpg",
+      "src": "images/carousel/what-did-you-find.jpg",
       "alt": "What Did You Find?",
-      "ratio": "1200 / 1600",
+      "ratio": "1050 / 1400",
       "title": "What Did You Find?",
       "caption": "oil on canvas, 2026"
     },
     {
-      "src": "images/film/orange-lights-2.jpg",
+      "src": "images/carousel/orange-lights.jpg",
       "alt": "Orange lights",
-      "ratio": "1800 / 812",
+      "ratio": "1400 / 632",
       "title": "Orange lights",
-      "caption": "short film"
+      "caption": "short film, coming soon"
     },
     {
-      "src": "images/painting/bathers.jpg",
+      "src": "images/carousel/bathers.jpg",
       "alt": "Bathers",
-      "ratio": "1600 / 1200",
+      "ratio": "1400 / 1050",
       "title": "Bathers",
       "caption": "oil on canvas, 2026"
     },
     {
-      "src": "images/film/good-night-sleep-tight-1.jpg",
+      "src": "images/carousel/good-night-sleep-tight.jpg",
       "alt": "Good night, sleep tight",
-      "ratio": "1800 / 753",
+      "ratio": "1400 / 586",
       "title": "Good night, sleep tight",
       "caption": "short film, 2023"
     },
     {
-      "src": "images/painting/juicer.jpg",
+      "src": "images/carousel/juicer.jpg",
       "alt": "Juicer",
-      "ratio": "1244 / 1600",
+      "ratio": "1088 / 1400",
       "title": "Juicer",
       "caption": "oil on canvas, 2024"
     },
     {
-      "src": "images/web/agata-slamova-2.jpg",
+      "src": "images/carousel/agata-slamova.jpg",
       "alt": "Agáta Slámová",
-      "ratio": "1440 / 900",
+      "ratio": "1400 / 875",
       "title": "Agáta Slámová",
       "caption": "website, 2025"
     },
     {
-      "src": "images/painting/night-fishing.jpg",
+      "src": "images/carousel/night-fishing.jpg",
       "alt": "Night Fishing",
-      "ratio": "1600 / 1333",
+      "ratio": "1400 / 1166",
       "title": "Night Fishing",
       "caption": "oil on canvas, 2023"
     },
     {
-      "src": "images/film/17-ovci-7-slepic.jpg",
+      "src": "images/carousel/17-ovci-7-slepic.jpg",
       "alt": "17 ovcí, 7 slepic",
-      "ratio": "1800 / 1013",
+      "ratio": "1400 / 788",
       "title": "17 ovcí, 7 slepic",
       "caption": "short documentary, 2018"
     },
     {
-      "src": "images/painting/deserted.jpg",
+      "src": "images/carousel/deserted.jpg",
       "alt": "Deserted",
-      "ratio": "1066 / 1600",
+      "ratio": "933 / 1400",
       "title": "Deserted",
       "caption": "oil on canvas, 2026"
     },
     {
-      "src": "images/film/stvoreni-2.jpg",
+      "src": "images/carousel/stvoreni-a-jeho-cesta-ven.jpg",
       "alt": "Stvoření a jeho cesta ven",
-      "ratio": "1537 / 1151",
+      "ratio": "1400 / 1048",
       "title": "Stvoření a jeho cesta ven",
       "caption": "short film, 2021"
-    },
-    {
-      "src": "images/painting/drawing-05.jpg",
-      "alt": "Drawing",
-      "ratio": "1200 / 1600",
-      "title": "Drawing",
-      "caption": "sketchbook"
     }
   ]
 }

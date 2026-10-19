@@ -15,10 +15,10 @@ A plain static site with no build step. GitHub Pages serves it straight from `ma
 | What | Where |
 | --- | --- |
 | Bio | the two paragraphs in `home.html`, marked with a comment |
-| Carousel | `content/work.json` |
+| Carousel | the `images/carousel/` folder, listed in `content/work.json` |
 | Projects (home grid, project pages, menu list) | `content/projects.json` |
 | Photos | the `images/` folder |
-| Email, Instagram, footer line | header and footer of `home.html`, `project.html` and `404.html` |
+| Email, Instagram, footer line | header and footer of `home.html`, `project.html`, `cv.html` and `404.html` |
 
 Anything still waiting for real content shows in square brackets with a dashed blue underline, like `[Title]`.
 
@@ -26,7 +26,7 @@ Anything still waiting for real content shows in square brackets with a dashed b
 
 Every image, in either file, has the same fields:
 
-- `src`: the path to the file, e.g. `"images/painting/bathers.jpg"`. Images are sorted into `images/painting`, `images/film` and `images/web`. Leave it empty to show a tinted placeholder.
+- `src`: the path to the file, e.g. `"images/painting/bathers.jpg"`. Project images are sorted into `images/painting`, `images/film` and `images/web`; the carousel has its own `images/carousel`. Leave it empty to show a tinted placeholder.
 - `alt`: a short description for screen readers and search engines.
 - `ratio`: the image's width / height, e.g. `"1600 / 1200"` (the pixel size works) or `"4 / 5"`. This sets the shape before the image loads, so get it close to the real file.
 - `tone`: the placeholder colour, which you can drop once `src` is set.
@@ -34,16 +34,28 @@ Every image, in either file, has the same fields:
 
 Export images as JPG or WebP, about 2000 px on the long edge and under 500 KB each, so the site stays quick on phones. Use lowercase file names with dashes and no spaces.
 
-### Carousel: `content/work.json`
+### Carousel: `images/carousel/` and `content/work.json`
 
-Each entry in `works` is one image with `title` and `caption`, shown underneath as one line: "Title, caption". The order in the file is the order on the page.
+The carousel shows the images in `images/carousel/`, in the order they're listed in `content/work.json`. To change it, put the image in that folder and add, remove or reorder its entry in `works`:
+
+```json
+{
+  "src": "images/carousel/bathers.jpg",
+  "alt": "Bathers",
+  "ratio": "1400 / 1050",
+  "title": "Bathers",
+  "caption": "oil on canvas, 2026"
+}
+```
+
+`title` and `caption` are shown underneath as one line: "Bathers, oil on canvas, 2026". `ratio` can be left out and the carousel takes the shape from the file, but with it the carousel doesn't shift as images load. About 1400 px on the long edge is plenty here. An image removed from `work.json` can be deleted from the folder too.
 
 ### Projects: `content/projects.json`
 
 Each project has:
 
 - `slug`: the short name used in its link, lowercase with dashes (e.g. `good-night-sleep-tight`). Change it and old links stop working.
-- `title`, `year`, `summary`: shown on the home page and at the top of the project page. `year` can be a range (`2023 – 2026`) or left empty.
+- `title`, `year`, `summary`: shown on the home page and at the top of the project page. `year` can be a range (`2023 – 2026`), words such as `Coming soon`, or left empty.
 - `field`: `Painting`, `Film` or `Web`. This is what the filters above the projects and the Fields in the menu use.
 - `kind`: a short description shown on the project page next to the year and field (e.g. `Feature · In development`).
 - `body`: a list of paragraphs for the project page.
@@ -51,7 +63,7 @@ Each project has:
 - `links`: optional buttons under the text, each `{ "label": "Watch on ČT art", "url": "https://…" }`. A file in `files/` works too, like the portfolio PDF.
 - `images`: all images for the project page, each with an optional `caption`. The first one is the project's image on the home page, so put the strongest first. A project with no images is listed as a single line under the image rows.
 
-Projects are shown newest first by the latest year in `year`; projects without a year come last, in file order.
+Projects are shown newest first by the latest year in `year`. A `year` in words (`Coming soon`) goes first; projects without a year come last, in file order.
 
 ## Code
 
