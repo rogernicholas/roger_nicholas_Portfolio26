@@ -52,7 +52,7 @@
         <span class="head">Elsewhere</span>
         <a href="https://instagram.com/rozero_n" target="_blank" rel="noopener">Instagram @rozero_n</a>
         <a href="https://github.com/rogernicholas" target="_blank" rel="noopener">GitHub</a>
-        <span class="ph">[your email]</span>
+        <a href="mailto:roger.nicholas@seznam.cz">roger.nicholas@seznam.cz</a>
         <span>EN · CZ · ES</span>
       </div>
     </div>
@@ -65,10 +65,7 @@
     <p>Before painting took over, I trained in screenwriting at FAMU and wrote for television. I still tell stories, just with drips now.</p>
   </section>
 
-  <section class="works" id="work" aria-labelledby="works-title">
-    <div class="wrap works-head">
-      <h2 class="label" id="works-title">Selected work</h2>
-    </div>
+  <section class="works" id="work" aria-label="Selected work">
     <!-- To add a work: copy one <figure>, put the file in images/, set --ratio to its width / height,
          and swap the placeholder span for <img src="images/your-file.jpg" alt="..."> -->
     <div class="track" id="track">
@@ -106,40 +103,65 @@
   </section>
 
   <section class="wrap projects" id="projects">
-    <div class="projects-head">
-      <h2>Projects</h2>
-      <span class="label">Painting · Film · Television</span>
-    </div>
-    <a class="row" href="#projects">
-      <span class="y">2026</span>
-      <span class="t">Space Analogs</span>
-      <span class="d">Feature film co-written with Jules Roux. A married couple joins a year-long Mars analog mission, and isolation pulls the crew apart.</span>
-      <span class="k label">Feature · In development</span>
-    </a>
-    <a class="row" href="#projects">
-      <span class="y">2026</span>
-      <span class="t">Judafest</span>
-      <span class="d">Paintings shown in a Prague synagogue during the Judafest festival, October 2026.</span>
-      <span class="k label">Exhibition</span>
-    </a>
-    <a class="row" href="#projects">
-      <span class="y">2026</span>
-      <span class="t">Mexico series</span>
-      <span class="d">A looser series of 60 × 80 cm oils, developed from time in Oaxaca and Mexico City.</span>
-      <span class="k label">Painting · Ongoing</span>
-    </a>
-    <a class="row" href="#projects">
-      <span class="y ph">[Year]</span>
-      <span class="t">Farma Česko</span>
-      <span class="d">Episodic scripts, production structure and the live finale for the reality show, produced by Joy Department.</span>
-      <span class="k label">Television</span>
-    </a>
-    <a class="row" href="#projects">
-      <span class="y">Ongoing</span>
-      <span class="t">Large oils</span>
-      <span class="d">120 × 160 cm canvases on solitude, softness and the inner world. Enquire for availability.</span>
-      <span class="k label">Painting</span>
-    </a>
+    <h2 class="projects-title">Projects</h2>
+    <!-- Each project: a group of images, then centred text. Set --ratio to each image's width / height
+         and swap the placeholder span for <img src="images/your-file.jpg" alt="..."> -->
+    <article class="project">
+      <div class="cluster">
+        <div class="shot" style="--ratio:16 / 9; --tone:#C7CDD3"><span class="ph-label label">[Film still]</span></div>
+        <div class="shot" style="--ratio:4 / 5; --tone:#B9C2CC"><span class="ph-label label">[Still]</span></div>
+        <div class="shot" style="--ratio:4 / 5; --tone:#D3D8DD"><span class="ph-label label">[Still]</span></div>
+      </div>
+      <div class="project-text">
+        <p class="meta label">2026 · Feature · In development</p>
+        <h3>Space Analogs</h3>
+        <p>Feature film co-written with Jules Roux. A married couple joins a year-long Mars analog mission, and isolation pulls the crew apart.</p>
+      </div>
+    </article>
+    <article class="project">
+      <div class="cluster">
+        <div class="shot" style="--ratio:3 / 4; --tone:#D9C9A8"><span class="ph-label label">[Painting]</span></div>
+        <div class="shot" style="--ratio:3 / 2; --tone:#CFC3AE"><span class="ph-label label">[Installation photo]</span></div>
+      </div>
+      <div class="project-text">
+        <p class="meta label">2026 · Exhibition</p>
+        <h3>Judafest</h3>
+        <p>Paintings shown in a Prague synagogue during the Judafest festival, October 2026.</p>
+      </div>
+    </article>
+    <article class="project">
+      <div class="cluster">
+        <div class="shot" style="--ratio:3 / 4; --tone:#E3CF98"><span class="ph-label label">[Painting]</span></div>
+        <div class="shot" style="--ratio:3 / 4; --tone:#E0B9A5"><span class="ph-label label">[Painting]</span></div>
+        <div class="shot" style="--ratio:3 / 4; --tone:#CDB6C4"><span class="ph-label label">[Painting]</span></div>
+      </div>
+      <div class="project-text">
+        <p class="meta label">2026 · Painting · Ongoing</p>
+        <h3>Mexico series</h3>
+        <p>A looser series of 60 × 80 cm oils, developed from time in Oaxaca and Mexico City.</p>
+      </div>
+    </article>
+    <article class="project">
+      <div class="cluster solo">
+        <div class="shot" style="--ratio:16 / 9; --tone:#BFC7AE"><span class="ph-label label">[Still]</span></div>
+      </div>
+      <div class="project-text">
+        <p class="meta label"><span class="ph">[Year]</span> · Television</p>
+        <h3>Farma Česko</h3>
+        <p>Episodic scripts, production structure and the live finale for the reality show, produced by Joy Department.</p>
+      </div>
+    </article>
+    <article class="project">
+      <div class="cluster">
+        <div class="shot" style="--ratio:3 / 4; --tone:#D3C4B5"><span class="ph-label label">[Painting]</span></div>
+        <div class="shot" style="--ratio:3 / 4; --tone:#D9C9A8"><span class="ph-label label">[Painting]</span></div>
+      </div>
+      <div class="project-text">
+        <p class="meta label">Ongoing · Painting</p>
+        <h3>Large oils</h3>
+        <p>120 × 160 cm canvases on solitude, softness and the inner world. Enquire for availability.</p>
+      </div>
+    </article>
   </section>
 </main>
 
@@ -147,12 +169,12 @@
   <div class="wrap">
     <div class="cta">
       <h2>Interested in a painting, a residency or a <em>script?</em></h2>
-      <a class="pill label" href="https://instagram.com/rozero_n" target="_blank" rel="noopener">Get in touch</a>
+      <a class="pill label" href="mailto:roger.nicholas@seznam.cz">Get in touch</a>
     </div>
     <div class="foot-row label">
       <span>Prague, CZ</span>
       <a href="https://instagram.com/rozero_n" target="_blank" rel="noopener">Instagram @rozero_n</a>
-      <span class="ph">[your email]</span>
+      <a href="mailto:roger.nicholas@seznam.cz">roger.nicholas@seznam.cz</a>
       <span>© 2026 Roger Nicholas</span>
     </div>
   </div>
