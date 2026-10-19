@@ -71,5 +71,28 @@ window.Site = (function () {
     });
   }
 
+  // Smooth wheel scrolling: the mouse wheel sets a target and the page eases
+  // towards it. Touch, keyboard and scrollbar scrolling stay native.
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      window.matchMedia('(pointer: fine)').matches) {
+    var target = window.scrollY, current = target, running = false;
+    var maxY = function () { return document.documentElement.scrollHeight - window.innerHeight; };
+    var step = function () {
+      current += (target - current) * 0.12;
+      if (Math.abs(target - current) < 0.5) { current = target; running = false; }
+      window.scrollTo({ top: current, behavior: 'instant' });
+      if (running) requestAnimationFrame(step);
+    };
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // zoom, sideways
+      if (menu && !menu.hidden) return;                                 // menu scrolls itself
+      e.preventDefault();
+      if (!running) target = current = window.scrollY;
+      var d = e.deltaY * (e.deltaMode === 1 ? 40 : e.deltaMode === 2 ? window.innerHeight : 1);
+      target = Math.max(0, Math.min(maxY(), target + d));
+      if (!running) { running = true; requestAnimationFrame(step); }
+    }, { passive: false });
+  }
+
   return { el: el, ratio: ratio, shot: shot, load: load };
 })();
