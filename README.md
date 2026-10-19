@@ -7,6 +7,7 @@ A plain static site with no build step. GitHub Pages serves it straight from `ma
 - `index.html`: the paper landing page you can paint on. Clicking the name opens the home page.
 - `home.html`: bio, drifting carousel, projects and contact.
 - `project.html#<slug>`: one project expanded, for example `project.html#judafest`.
+- `cv.html`: your CV. Edit the entries in the file directly: each line is a year, a title and a place or detail.
 - `404.html`: shown for broken links.
 
 ## Where the content lives
