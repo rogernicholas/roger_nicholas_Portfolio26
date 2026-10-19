@@ -1,29 +1,59 @@
 # Roger Nicholas portfolio
 
-Plain static site, no build step. Served by GitHub Pages straight from `main`.
+A plain static site with no build step. GitHub Pages serves it straight from `main`, and every change shows up on the live site a minute or two after it's committed.
 
-- `index.html`: paper landing page you can paint on; clicking the name opens the home page.
-- `home.html`: bio, drifting carousel of work, projects, contact, full menu.
-- `project.html#<slug>`: one project expanded (e.g. `project.html#judafest`).
-- `content/projects.json`: all project text and images. Edit this to change projects.
-- `images/`: upload photos here.
-- `assets/`: styles and scripts.
+## Pages
 
-## Editing projects
+- `index.html`: the paper landing page you can paint on. Clicking the name opens the home page.
+- `home.html`: bio, drifting carousel, projects and contact.
+- `project.html#<slug>`: one project expanded, for example `project.html#judafest`.
+- `404.html`: shown for broken links.
 
-Each project in `content/projects.json` has:
+## Where the content lives
 
-- `slug`: the short name used in its link (lowercase, dashes, no spaces)
-- `title`, `year`, `kind`, `summary` (shown on the home page)
-- `body`: list of paragraphs shown on the project page
-- `images`: the images shown on the project page, each with an optional `caption`. The first one to three also appear side by side on the home page, so put your favourites first.
+| What | Where |
+| --- | --- |
+| Bio | the two paragraphs in `home.html`, marked with a comment |
+| Carousel | `content/work.json` |
+| Projects (home grid, project pages, menu list) | `content/projects.json` |
+| Photos | the `images/` folder |
+| Email, Instagram, footer line | header and footer of `home.html`, `project.html` and `404.html` |
 
-For an image, set `src` to its path, e.g. `"images/judafest-1.jpg"`, write a short `alt` description, and set `ratio` to its width / height, e.g. `"3 / 2"`. While `src` is empty, a coloured placeholder shows instead.
+Anything still waiting for real content shows in square brackets with a dashed blue underline, like `[Title]`.
 
-The order of projects in the file is the order on the site. If you add a project, also add its link to the Projects column of the menu in `home.html` and `project.html`.
+### Images
 
-## Editing the carousel
+Every image, in either file, has the same fields:
 
-The carousel lives in `home.html` inside `<div class="belt">`. Copy a `<figure>`, set `--ratio`, and swap the placeholder span for `<img src="images/..." alt="...">`.
+- `src`: the path to the file, e.g. `"images/judafest-1.jpg"`. Leave it empty to show a tinted placeholder.
+- `alt`: a short description for screen readers and search engines.
+- `ratio`: the image's width / height, e.g. `"3 / 2"` for landscape or `"4 / 5"` for portrait. This sets the shape before the image loads, so get it close to the real file.
+- `tone`: the placeholder colour, which you can drop once `src` is set.
+- `label`: the placeholder text, which you can drop once `src` is set.
 
-Anything still needing real content is shown in square brackets with a dashed blue underline.
+Export images as JPG or WebP, about 2000 px on the long edge and under 500 KB each, so the site stays quick on phones. Use lowercase file names with dashes and no spaces.
+
+### Carousel: `content/work.json`
+
+Each entry in `works` is one image with `title` and `caption`, shown underneath as one line: "Title, caption". The order in the file is the order on the page.
+
+### Projects: `content/projects.json`
+
+Each project has:
+
+- `slug`: the short name used in its link, lowercase with dashes (e.g. `mexico-series`). Change it and old links stop working.
+- `title`, `year`, `kind`, `summary`: shown on the home page and at the top of the project page.
+- `body`: a list of paragraphs for the project page.
+- `images`: all images for the project page, each with an optional `caption`. The first one is the project's image on the home page, so put the strongest first.
+
+The order of projects in the file is the order on the site and in the menu.
+
+## Code
+
+- `assets/style.css`: all styles. Colours, fonts, type sizes and spacing are tokens at the top.
+- `assets/site.js`: shared helpers and the menu.
+- `assets/carousel.js`: renders and animates the carousel.
+- `assets/projects.js`: renders the projects grid, the project page and the menu list.
+- `assets/paint.js`: the paint brush on the landing page.
+
+To preview locally, run `python3 -m http.server` in this folder and open http://localhost:8000. Opening the files directly from disk won't load the content files.

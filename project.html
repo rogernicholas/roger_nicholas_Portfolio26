@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Project, Roger Nicholas</title>
-<meta name="description" content="Large oils and screenwriting by Roger Nicholas, Prague.">
+<meta name="description" content="Roger Nicholas, painter and screenwriter in Prague. Large oils, film and television.">
+<meta property="og:title" content="Project, Roger Nicholas">
+<meta property="og:description" content="Roger Nicholas, painter and screenwriter in Prague. Large oils, film and television.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F2EDE3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%232B3FA0' d='M32 6c13 0 24 10 24 23 0 11-7 17-12 20-3 2-4 4-4 7v2a4 4 0 0 1-8 0v-4c0-3-2-5-5-6C17 45 8 39 8 28 8 15 19 6 32 6z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Oxygen+Mono&display=swap">
@@ -13,24 +18,24 @@
 <body class="grain">
 
 <header class="site-header">
-  <div class="wrap">
+  <div class="wrap bar">
     <a class="logo" href="index.html" title="Back to the paper">Roger Nicholas</a>
-    <nav class="nav label" aria-label="Main">
+    <nav class="nav" aria-label="Main">
       <div class="nav-links">
         <a href="home.html#projects">Projects</a>
         <a href="home.html#about">About</a>
         <a href="home.html#contact">Contact</a>
       </div>
-      <button class="pill label" type="button" id="menu-open" aria-expanded="false" aria-controls="menu">Menu</button>
+      <button class="pill" type="button" id="menu-open" aria-expanded="false" aria-controls="menu">Menu</button>
     </nav>
   </div>
 </header>
 
 <div class="menu" id="menu" hidden>
   <div class="wrap">
-    <div class="menu-head">
+    <div class="bar">
       <a class="logo" href="index.html">Roger Nicholas</a>
-      <button class="pill label" type="button" id="menu-close">Close</button>
+      <button class="pill" type="button" id="menu-close">Close</button>
     </div>
     <div class="menu-grid">
       <nav class="menu-main" aria-label="Sections">
@@ -39,15 +44,11 @@
         <a href="home.html#contact">Contact</a>
         <a href="index.html">Paint the page</a>
       </nav>
-      <div class="menu-col label">
+      <div class="menu-col" id="menu-projects">
         <span class="head">Projects</span>
-        <a href="project.html#space-analogs">Space Analogs</a>
-        <a href="project.html#judafest">Judafest</a>
-        <a href="project.html#mexico-series">Mexico series</a>
-        <a href="project.html#farma-cesko">Farma Česko</a>
-        <a href="project.html#large-oils">Large oils</a>
+        <!-- filled from content/projects.json -->
       </div>
-      <div class="menu-col label">
+      <div class="menu-col">
         <span class="head">Elsewhere</span>
         <a href="https://instagram.com/rozero_n" target="_blank" rel="noopener">Instagram @rozero_n</a>
         <a href="https://github.com/rogernicholas" target="_blank" rel="noopener">GitHub</a>
@@ -58,13 +59,14 @@
   </div>
 </div>
 
+<!-- Filled from content/projects.json; the part after # picks the project -->
 <main class="wrap detail" id="project-page" aria-live="polite"></main>
 
 <footer class="site-footer" id="contact">
   <div class="wrap">
     <div class="cta">
-      <h2>Interested in a painting, a residency or a <em>script?</em></h2>
-      <a class="pill label" href="mailto:roger.nicholas@seznam.cz">Get in touch</a>
+      <h2>Interested in a painting, a residency or a script?</h2>
+      <a class="pill" href="mailto:roger.nicholas@seznam.cz">Get in touch</a>
     </div>
     <div class="foot-row label">
       <span>Prague, CZ</span>
@@ -75,7 +77,7 @@
   </div>
 </footer>
 
-<script src="assets/home.js"></script>
+<script src="assets/site.js"></script>
 <script src="assets/projects.js"></script>
 </body>
 </html>

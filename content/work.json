@@ -1,0 +1,11 @@
+{
+  "works": [
+    { "src": "", "alt": "", "ratio": "4 / 5", "tone": "#D9C9A8", "label": "Painting", "title": "[Title]", "caption": "Oil on canvas, 120 × 160 cm" },
+    { "src": "", "alt": "", "ratio": "16 / 9", "tone": "#C7CDD3", "label": "Film still", "title": "[Title]", "caption": "Space Analogs" },
+    { "src": "", "alt": "", "ratio": "1 / 1", "tone": "#E0B9A5", "label": "Painting", "title": "[Title]", "caption": "Mexico series, 60 × 80 cm" },
+    { "src": "", "alt": "", "ratio": "3 / 2", "tone": "#BFC7AE", "label": "Photo", "title": "[Title]", "caption": "Prague" },
+    { "src": "", "alt": "", "ratio": "3 / 4", "tone": "#E3CF98", "label": "Painting", "title": "[Title]", "caption": "Oil on canvas, 120 × 160 cm" },
+    { "src": "", "alt": "", "ratio": "2 / 3", "tone": "#CDB6C4", "label": "Photo", "title": "[Title]", "caption": "Oaxaca" },
+    { "src": "", "alt": "", "ratio": "4 / 3", "tone": "#D3C4B5", "label": "Painting", "title": "[Title]", "caption": "Judafest, 2026" }
+  ]
+}
