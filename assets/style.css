@@ -257,7 +257,9 @@ body::before { /* paints the band above the sticky header on phones */
   font-size: var(--t-nav);
   font-weight: 500;
 }
+/* wide screens show the links; phones get the Menu button instead */
 @media (max-width: 820px) { .nav-links { display: none; } }
+@media (min-width: 821px) { #menu-open { display: none; } }
 
 .menu {
   position: fixed;
