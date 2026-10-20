@@ -216,31 +216,22 @@
     head.appendChild(el('p', 'summary', p.summary));
     page.appendChild(head);
 
-    // the film: its first still with a play button. The Vimeo player only
-    // loads when it's clicked, then plays in place, so the page stays light.
+    // the film, in Roger's Vimeo player above the stills. Private videos need
+    // the hash from Vimeo's embed code (?h=…). It isn't faded in, so the player
+    // isn't redrawn while it loads.
     var stills = p.images || [];
     if (p.video && p.video.vimeo) {
       var v = p.video;
-      var film = el('a', 'video');
-      film.href = 'https://vimeo.com/' + v.vimeo + (v.hash ? '/' + v.hash : '');
-      film.setAttribute('aria-label', 'Play ' + p.title);
-      film.appendChild(Site.shot(stills[0]));
-      film.appendChild(el('span', 'play pill', '▶ Watch the film'));
-      film.addEventListener('click', function (e) {
-        if (e.metaKey || e.ctrlKey || e.shiftKey) return; // new tab: open on Vimeo
-        e.preventDefault();
-        var frame = document.createElement('iframe');
-        frame.src = 'https://player.vimeo.com/video/' + v.vimeo + '?' + (v.hash ? 'h=' + v.hash + '&' : '') +
-          'autoplay=1&dnt=1&title=0&byline=0&portrait=0&color=2B3FA0';
-        frame.title = p.title;
-        frame.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media';
-        frame.referrerPolicy = 'strict-origin-when-cross-origin';
-        frame.allowFullscreen = true;
-        film.classList.add('playing');
-        film.replaceChildren(frame);
-      });
+      var film = el('div', 'video');
+      var frame = document.createElement('iframe');
+      frame.src = 'https://player.vimeo.com/video/' + v.vimeo + '?' + (v.hash ? 'h=' + v.hash + '&' : '') +
+        'dnt=1&title=0&byline=0&portrait=0&color=2B3FA0';
+      frame.title = p.title;
+      frame.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media';
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.allowFullscreen = true;
+      film.appendChild(frame);
       page.appendChild(film);
-      stills = stills.slice(1);
     }
 
     var gallery = el('div', 'gallery');
@@ -278,7 +269,7 @@
     }
     window.scrollTo(0, 0);
     // the project fades in piece by piece each time one is opened
-    Site.reveal(page.querySelectorAll('.detail-back, .detail-head, .video, .gallery-item, .detail-body, .detail-nav'));
+    Site.reveal(page.querySelectorAll('.detail-back, .detail-head, .gallery-item, .detail-body, .detail-nav'));
   }
 
   var restore = list ? setupReturn() : null;
