@@ -586,7 +586,7 @@ body::before { /* paints the band above the sticky header on phones */
   font-variation-settings: "opsz" 24;
 }
 .cv-list p { color: var(--ink-soft); }
-.cv-list h3 a::after { content: " →"; color: var(--accent); }
+.cv-list h3 a::after, .cv-list ul a::after { content: " →"; color: var(--accent); }
 .cv-list ul {
   margin: var(--s-1) 0 0;
   padding-left: 1.2em;

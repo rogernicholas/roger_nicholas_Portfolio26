@@ -216,16 +216,25 @@
     head.appendChild(el('p', 'summary', p.summary));
     page.appendChild(head);
 
-    // the film, in Roger's Vimeo player above the stills. Private videos need
-    // the hash from Vimeo's embed code (?h=…). It isn't faded in, so the player
-    // isn't redrawn while it loads.
+    // the film, in its Vimeo or YouTube player above the stills. Private Vimeo
+    // videos need the hash from the embed code (?h=…). It isn't faded in, so
+    // the player isn't redrawn while it loads.
     var stills = p.images || [];
-    if (p.video && p.video.vimeo) {
-      var v = p.video;
+    var v = p.video || {};
+    var player = v.vimeo ? {
+      src: 'https://player.vimeo.com/video/' + v.vimeo + '?' + (v.hash ? 'h=' + v.hash + '&' : '') +
+        'dnt=1&title=0&byline=0&portrait=0&color=2B3FA0',
+      page: 'https://vimeo.com/' + v.vimeo + (v.hash ? '/' + v.hash : ''),
+      host: 'player.vimeo.com', name: 'Vimeo'
+    } : v.youtube ? {
+      src: 'https://www.youtube-nocookie.com/embed/' + v.youtube + '?rel=0',
+      page: 'https://www.youtube.com/watch?v=' + v.youtube,
+      host: 'youtube', name: 'YouTube'
+    } : null;
+    if (player) {
       var film = el('div', 'video');
       var frame = document.createElement('iframe');
-      frame.src = 'https://player.vimeo.com/video/' + v.vimeo + '?' + (v.hash ? 'h=' + v.hash + '&' : '') +
-        'dnt=1&title=0&byline=0&portrait=0&color=2B3FA0';
+      frame.src = player.src;
       frame.title = p.title;
       frame.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media';
       frame.referrerPolicy = 'strict-origin-when-cross-origin';
@@ -233,16 +242,16 @@
       film.appendChild(frame);
       page.appendChild(film);
       // where outside players are blocked (like the claude.ai preview), show
-      // the first still with a button that opens the film on Vimeo instead
+      // the first still with a button that opens the film on Vimeo or YouTube
       document.addEventListener('securitypolicyviolation', function (e) {
         if (!film.isConnected || frame.parentNode !== film) return;
-        if (String(e.blockedURI).indexOf('player.vimeo.com') === -1) return;
+        if (String(e.blockedURI).indexOf(player.host) === -1) return;
         var link = el('a', 'video-link');
-        link.href = 'https://vimeo.com/' + v.vimeo + (v.hash ? '/' + v.hash : '');
+        link.href = player.page;
         link.target = '_blank';
         link.rel = 'noopener';
         link.appendChild(Site.shot(stills[0]));
-        link.appendChild(el('span', 'play pill', '▶ Watch on Vimeo'));
+        link.appendChild(el('span', 'play pill', '▶ Watch on ' + player.name));
         film.classList.add('blocked');
         film.replaceChildren(link);
       });
