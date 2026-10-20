@@ -232,6 +232,20 @@
       frame.allowFullscreen = true;
       film.appendChild(frame);
       page.appendChild(film);
+      // where outside players are blocked (like the claude.ai preview), show
+      // the first still with a button that opens the film on Vimeo instead
+      document.addEventListener('securitypolicyviolation', function (e) {
+        if (!film.isConnected || frame.parentNode !== film) return;
+        if (String(e.blockedURI).indexOf('player.vimeo.com') === -1) return;
+        var link = el('a', 'video-link');
+        link.href = 'https://vimeo.com/' + v.vimeo + (v.hash ? '/' + v.hash : '');
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.appendChild(Site.shot(stills[0]));
+        link.appendChild(el('span', 'play pill', '▶ Watch on Vimeo'));
+        film.classList.add('blocked');
+        film.replaceChildren(link);
+      });
     }
 
     var gallery = el('div', 'gallery');

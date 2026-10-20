@@ -489,6 +489,19 @@ body::before { /* paints the band above the sticky header on phones */
 /* a film, in the Vimeo player */
 .video { width: 100%; aspect-ratio: 16 / 9; background: var(--ink); }
 .video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video.blocked { aspect-ratio: auto; background: none; }
+.video-link { position: relative; display: block; overflow: hidden; }
+.video-link .shot { width: 100%; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.video-link:hover .shot { transform: scale(1.03); }
+.video-link .play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.video-link:hover .play { background: var(--on-accent); color: var(--accent); }
 .gallery {
   width: 100%;
   display: flex;
