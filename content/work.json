@@ -3,7 +3,7 @@
     {
       "src": "images/carousel/what-did-you-find.jpg",
       "alt": "What Did You Find?",
-      "ratio": "1050 / 1400",
+      "ratio": "1048 / 1400",
       "title": "What Did You Find?",
       "caption": "oil on canvas, 2026"
     },
@@ -15,18 +15,18 @@
       "caption": "short film, coming soon"
     },
     {
+      "src": "images/carousel/winevision.jpg",
+      "alt": "Winevision",
+      "ratio": "1400 / 764",
+      "title": "Winevision",
+      "caption": "website, 2026"
+    },
+    {
       "src": "images/carousel/bathers.jpg",
       "alt": "Bathers",
       "ratio": "1400 / 1050",
       "title": "Bathers",
       "caption": "oil on canvas, 2026"
-    },
-    {
-      "src": "images/carousel/good-night-sleep-tight.jpg",
-      "alt": "Good night, sleep tight",
-      "ratio": "1400 / 586",
-      "title": "Good night, sleep tight",
-      "caption": "short film, 2023"
     },
     {
       "src": "images/carousel/juicer.jpg",
@@ -43,13 +43,6 @@
       "caption": "website, 2025"
     },
     {
-      "src": "images/carousel/night-fishing.jpg",
-      "alt": "Night Fishing",
-      "ratio": "1400 / 1166",
-      "title": "Night Fishing",
-      "caption": "oil on canvas, 2023"
-    },
-    {
       "src": "images/carousel/16-sheep-7-hens.jpg",
       "alt": "16 sheep, 7 hens",
       "ratio": "1400 / 788",
@@ -62,6 +55,13 @@
       "ratio": "933 / 1400",
       "title": "Deserted",
       "caption": "oil on canvas, 2026"
+    },
+    {
+      "src": "images/carousel/i-want-to-die-as-a-martyr.jpg",
+      "alt": "I want to die as a martyr",
+      "ratio": "1400 / 796",
+      "title": "I want to die as a martyr",
+      "caption": "short film, 2020"
     },
     {
       "src": "images/carousel/stvoreni-a-jeho-cesta-ven.jpg",
