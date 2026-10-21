@@ -651,6 +651,14 @@ body::before { /* paints the band above the sticky header on phones */
 }
 .site-footer .ph { background: rgba(242, 237, 227, 0.1); border-bottom-color: var(--on-accent-soft); }
 
+/* bigger tap areas on touch screens, without moving anything */
+@media (pointer: coarse) {
+  .foot-row a,
+  .menu-col a { padding-block: 12px; margin-block: -12px; }
+  .nav-links a { padding: 12px; margin: -12px; }
+  .filters button { min-width: 44px; padding-block: 12px; }
+}
+
 /* ---------- Not found ---------- */
 .missing {
   min-height: calc(100vh - var(--bar));
