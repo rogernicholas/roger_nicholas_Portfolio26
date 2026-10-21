@@ -305,7 +305,7 @@ body::before { /* paints the band above the sticky header on phones */
 /* ---------- Home: bio ---------- */
 .about {
   display: grid;
-  grid-template-columns: auto minmax(0, 52ch) auto;
+  grid-template-columns: auto minmax(0, 30ch) auto;
   justify-content: center;
   align-items: center;
   gap: var(--s-6);
