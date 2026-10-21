@@ -305,9 +305,10 @@ body::before { /* paints the band above the sticky header on phones */
 /* ---------- Home: bio ---------- */
 .about {
   display: grid;
-  grid-template-columns: 1fr minmax(0, 58ch) 1fr;
-  align-items: start;
-  gap: var(--s-4);
+  grid-template-columns: auto minmax(0, 52ch) auto;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s-6);
   padding-block: var(--s-7) var(--s-6);
   text-align: center;
 }
@@ -323,18 +324,17 @@ body::before { /* paints the band above the sticky header on phones */
 }
 /* short phrases either side of the text */
 .aside {
-  padding-top: 6px;
   font-family: var(--f-display);
   font-size: var(--t-nav);
   font-weight: 500;
   color: var(--accent);
 }
-.aside-left { justify-self: start; }
-.aside-right { justify-self: end; }
+@media (max-width: 1100px) { .about { gap: var(--s-4); } }
 @media (max-width: 820px) {
   .about { grid-template-columns: 1fr 1fr; }
   .about-text { grid-column: 1 / -1; grid-row: 1; }
-  .aside { padding-top: 0; }
+  .aside-left { justify-self: start; }
+  .aside-right { justify-self: end; }
 }
 
 /* ---------- Home: carousel, drifting right ---------- */
