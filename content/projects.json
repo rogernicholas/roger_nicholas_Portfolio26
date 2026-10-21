@@ -52,19 +52,13 @@
       "year": "2023 – 2026",
       "field": "Painting",
       "kind": "A selection of paintings",
-      "summary": "Oil paintings of figures turned away, and the pull between home and the road.",
+      "summary": "Figures with their backs to us, somewhere between home and the road.",
       "body": [
-        "I trained as a screenwriter before I started painting, and I still think in scenes. For me, a painting is the moment just before or just after something happens.",
-        "I build each picture on the tension between warm and cold, between the calm of home and the urge to leave it. My figures usually turn away. I would rather you stand where they stand than look at their faces.",
-        "The work grows one painting at a time, like a diary of looking for a place of my own."
+        "Every painting is the moment just before something happens, or just after.",
+        "No one turns around. You are left standing where they stand."
       ],
       "tech": "",
-      "links": [
-        {
-          "label": "Portfolio (PDF)",
-          "url": "files/roger-nicholas-portfolio-2026.pdf"
-        }
-      ],
+      "links": [],
       "images": [
         {
           "src": "images/painting/what-did-you-find.jpg",
@@ -131,6 +125,12 @@
           "alt": "Juicer, oil painting",
           "ratio": "1244 / 1600",
           "caption": "Juicer, 2024. Oil on canvas, 90 × 70 cm"
+        },
+        {
+          "src": "images/painting/oils-show.jpg",
+          "alt": "A visitor looking at What Did You Find? at Judafest",
+          "ratio": "2000 / 1333",
+          "caption": "Judafest, Prague 2026. Photo: Markéta Vlasatá"
         }
       ]
     },
