@@ -37,6 +37,12 @@
           "alt": "Juicer hanging in the synagogue, with a visitor",
           "ratio": "1067 / 1600",
           "caption": "Juicer, installed. Photo: Markéta Vlasatá"
+        },
+        {
+          "src": "images/painting/judafest-the-boy.jpg",
+          "alt": "Visitors in front of The Boy at Judafest",
+          "ratio": "1066 / 1600",
+          "caption": "The Boy, installed. Photo: Markéta Vlasatá"
         }
       ]
     },
@@ -63,7 +69,7 @@
         {
           "src": "images/painting/what-did-you-find.jpg",
           "alt": "What Did You Find?, oil painting",
-          "ratio": "1200 / 1600",
+          "ratio": "1198 / 1600",
           "caption": "What Did You Find?, 2026. Oil on canvas, 180 × 120 cm"
         },
         {
@@ -80,15 +86,33 @@
         },
         {
           "src": "images/painting/the-boy.jpg",
-          "alt": "The Boy hanging at Judafest, with visitors",
-          "ratio": "1066 / 1600",
-          "caption": "The Boy, 2025. Oil on canvas, 120 × 100 cm. Installation view, Judafest, Prague 2026. Photo: Markéta Vlasatá"
+          "alt": "The Boy, oil painting",
+          "ratio": "1331 / 1600",
+          "caption": "The Boy, 2025. Oil on canvas, 120 × 100 cm"
         },
         {
           "src": "images/painting/beyond-the-forest.jpg",
-          "alt": "Beyond the Forest, a diptych on a wall",
-          "ratio": "1600 / 1067",
-          "caption": "Beyond the Forest, 2025. Oil on canvas, 120 × 200 cm. Diptych, installed"
+          "alt": "Beyond the Forest, oil painting, detail of the diptych",
+          "ratio": "1600 / 1129",
+          "caption": "Beyond the Forest, 2025. Oil on canvas, 120 × 200 cm. Diptych, detail"
+        },
+        {
+          "src": "images/painting/agaves.jpg",
+          "alt": "Oil painting of agave plants against a pink and orange lattice",
+          "ratio": "1600 / 1224",
+          "caption": "Oil on canvas"
+        },
+        {
+          "src": "images/painting/girl-with-sheep.jpg",
+          "alt": "Oil painting of a girl sitting with a sheep on red ground",
+          "ratio": "1357 / 1600",
+          "caption": "Oil on canvas"
+        },
+        {
+          "src": "images/painting/oranges.jpg",
+          "alt": "Oil painting of a hand holding oranges in a red net",
+          "ratio": "1242 / 1600",
+          "caption": "Oil on canvas"
         },
         {
           "src": "images/painting/night-fishing.jpg",
