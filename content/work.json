@@ -1,6 +1,12 @@
 {
   "works": [
     {
+      "src": "images/carousel/me.jpg",
+      "alt": "Roger Nicholas in front of an empty gilded frame",
+      "ratio": "1054 / 1400",
+      "title": "Me"
+    },
+    {
       "src": "images/carousel/stvoreni-a-jeho-cesta-ven.jpg",
       "alt": "Stvoření a jeho cesta ven",
       "ratio": "1400 / 1048",
