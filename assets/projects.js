@@ -126,9 +126,9 @@
     return shown;
   }
 
-  // Opening a project from the grid: its image grows until it fills the
-  // screen, then the project page opens under the same picture and the picture
-  // fades away. Skipped for new-tab clicks and when motion is reduced.
+  // Opening a project from the grid: its image grows until it fills the screen
+  // under the header, which is exactly where the project page shows it, so the
+  // page opens around it. Skipped for new-tab clicks and when motion is reduced.
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function cover(src) {
     var box = el('div', 'expand');
@@ -139,6 +139,12 @@
     document.body.appendChild(box);
     return box;
   }
+  // where the project page's full-screen picture sits, with the page at the top
+  function heroBox(h) {
+    var head = document.querySelector('.site-header');
+    var top = head ? Math.round(head.getBoundingClientRect().bottom) : 0;
+    return { top: top + 'px', left: '0px', width: document.documentElement.clientWidth + 'px', height: (h - top) + 'px' };
+  }
   function expand(e, a, p) {
     if (calm || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var img = a.querySelector('.shot img');
@@ -147,7 +153,7 @@
     var r = img.getBoundingClientRect();
     var box = cover(img.currentSrc || img.src);
     var from = { top: r.top + 'px', left: r.left + 'px', width: r.width + 'px', height: r.height + 'px' };
-    var to = { top: '0px', left: '0px', width: window.innerWidth + 'px', height: window.innerHeight + 'px' };
+    var to = heroBox(window.innerHeight);
     remember('expand', JSON.stringify({ slug: p.slug, src: img.currentSrc || img.src }));
     box.animate([from, to], { duration: 700, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', fill: 'forwards' })
       .finished.then(function () { location.href = a.href; });
@@ -158,8 +164,8 @@
     if (!e.persisted) return;
     document.querySelectorAll('.expand').forEach(function (n) { n.remove(); });
   });
-  // the project page starts under the same picture, which fades once the
-  // project is on the page
+  // the project page holds the same picture in the same place until its own
+  // full-screen picture has drawn, then simply drops it
   function arrive(slug) {
     var s = recall('expand');
     if (!s) return function () {};
@@ -167,16 +173,15 @@
     try { s = JSON.parse(s); } catch (e) { return function () {}; }
     if (calm || s.slug !== slug) return function () {};
     var box = cover(s.src);
-    box.style.inset = '0';
-    var img = box.querySelector('img');
-    var ready = (img.decode ? img.decode() : Promise.resolve()).catch(function () {});
+    var place = heroBox(window.innerHeight);
+    Object.keys(place).forEach(function (k) { box.style[k] = place[k]; });
+    var drop = function () { box.remove(); };
+    setTimeout(drop, 3000); // never stay
     return function () {
-      ready.then(function () {
-        setTimeout(function () {
-          box.classList.add('out');
-          setTimeout(function () { box.remove(); }, 800);
-        }, 150);
-      });
+      var img = document.querySelector('#project-hero img');
+      if (!img) return drop();
+      var shown = img.decode ? img.decode() : Promise.resolve();
+      shown.then(drop, drop);
     };
   }
 
@@ -263,6 +268,19 @@
     var p = projects[k];
     document.title = p.title + ', Roger Nicholas';
     page.textContent = '';
+    var hero = document.getElementById('project-hero');
+    if (hero) {
+      var first = (p.images || [])[0];
+      hero.textContent = '';
+      hero.hidden = !(first && first.src);
+      if (!hero.hidden) {
+        var pic = document.createElement('img');
+        pic.src = first.src;
+        pic.alt = first.alt || '';
+        pic.decoding = 'async';
+        hero.appendChild(pic);
+      }
+    }
     page.appendChild(backLink('← All projects', 'detail-back'));
 
     var head = el('header', 'detail-head');
