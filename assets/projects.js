@@ -126,6 +126,60 @@
     return shown;
   }
 
+  // Opening a project from the grid: its image grows until it fills the
+  // screen, then the project page opens under the same picture and the picture
+  // fades away. Skipped for new-tab clicks and when motion is reduced.
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function cover(src) {
+    var box = el('div', 'expand');
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    box.appendChild(img);
+    document.body.appendChild(box);
+    return box;
+  }
+  function expand(e, a, p) {
+    if (calm || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var img = a.querySelector('.shot img');
+    if (!img || !img.complete || !img.naturalWidth || !img.animate) return;
+    e.preventDefault();
+    var r = img.getBoundingClientRect();
+    var box = cover(img.currentSrc || img.src);
+    var from = { top: r.top + 'px', left: r.left + 'px', width: r.width + 'px', height: r.height + 'px' };
+    var to = { top: '0px', left: '0px', width: window.innerWidth + 'px', height: window.innerHeight + 'px' };
+    remember('expand', JSON.stringify({ slug: p.slug, src: img.currentSrc || img.src }));
+    box.animate([from, to], { duration: 700, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', fill: 'forwards' })
+      .finished.then(function () { location.href = a.href; });
+  }
+  // coming back with the browser's back button can bring the page back as it
+  // was left, picture and all
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    document.querySelectorAll('.expand').forEach(function (n) { n.remove(); });
+  });
+  // the project page starts under the same picture, which fades once the
+  // project is on the page
+  function arrive(slug) {
+    var s = recall('expand');
+    if (!s) return function () {};
+    try { sessionStorage.removeItem('expand'); } catch (e) {}
+    try { s = JSON.parse(s); } catch (e) { return function () {}; }
+    if (calm || s.slug !== slug) return function () {};
+    var box = cover(s.src);
+    box.style.inset = '0';
+    var img = box.querySelector('img');
+    var ready = (img.decode ? img.decode() : Promise.resolve()).catch(function () {});
+    return function () {
+      ready.then(function () {
+        setTimeout(function () {
+          box.classList.add('out');
+          setTimeout(function () { box.remove(); }, 800);
+        }, 150);
+      });
+    };
+  }
+
   // Home: one to three projects per row depending on how wide each one's first
   // image is. Every image in a row shares one height.
   function tile(p) {
@@ -140,6 +194,7 @@
     text.appendChild(el('h3', null, p.title));
     text.appendChild(el('p', 'summary', p.summary));
     a.appendChild(text);
+    a.addEventListener('click', function (e) { expand(e, a, p); });
     return { node: a, r: r };
   }
 
@@ -296,6 +351,7 @@
   }
 
   var restore = list ? setupReturn() : null;
+  var landed = page ? arrive(decodeURIComponent(location.hash.slice(1))) : null;
 
   Site.load('content/projects.json')
     .then(function (data) {
@@ -315,11 +371,13 @@
       }
       if (page) {
         renderPage(projects);
+        landed();
         window.addEventListener('hashchange', function () { renderPage(projects); });
       }
     })
     .catch(function () {
       document.documentElement.classList.remove('returning');
+      if (landed) landed();
       var target = list || page;
       if (target) target.appendChild(el('p', 'load-error', 'Projects could not be loaded. Refresh the page to try again.'));
     });
