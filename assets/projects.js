@@ -126,64 +126,37 @@
     return shown;
   }
 
-  // Opening a project from the grid: its image grows until it fills the screen
-  // under the header, which is exactly where the project page shows it, so the
-  // page opens around it. Skipped for new-tab clicks and when motion is reduced.
-  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function cover(src) {
-    var box = el('div', 'expand');
-    var img = document.createElement('img');
-    img.src = src;
-    img.alt = '';
-    box.appendChild(img);
-    document.body.appendChild(box);
-    return box;
+  // Opening a project from the grid unfolds it into its page: the picture,
+  // title, label and summary move to where the project page has them while the
+  // rest of the page fades in. Browsers without cross-page view transitions
+  // (and anyone who prefers less motion) simply open the page.
+  var MORPH = 'project-morph';
+  var parts = ['meta', 'title', 'summary', 'picture'];
+  function name(node, part) { if (node) node.style.viewTransitionName = part ? 'project-' + part : ''; }
+  var morphing = false;
+  function unfold(a, p) {
+    morphing = true;
+    remember(MORPH, p.slug);
+    name(a.querySelector('.meta'), 'meta');
+    name(a.querySelector('h3 span'), 'title');
+    name(a.querySelector('.summary'), 'summary');
+    name(a.querySelector('.shot'), 'picture');
   }
-  // where the project page's full-screen picture sits, with the page at the top
-  function heroBox(h) {
-    var head = document.querySelector('.site-header');
-    var top = head ? Math.round(head.getBoundingClientRect().bottom) : 0;
-    return { top: top + 'px', left: '0px', width: document.documentElement.clientWidth + 'px', height: (h - top) + 'px' };
-  }
-  function expand(e, a, p) {
-    if (calm || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    var img = a.querySelector('.shot img');
-    if (!img || !img.complete || !img.naturalWidth || !img.animate) return;
-    e.preventDefault();
-    var r = img.getBoundingClientRect();
-    var box = cover(img.currentSrc || img.src);
-    var from = { top: r.top + 'px', left: r.left + 'px', width: r.width + 'px', height: r.height + 'px' };
-    var to = heroBox(window.innerHeight);
-    remember('expand', JSON.stringify({ slug: p.slug, src: img.currentSrc || img.src }));
-    box.animate([from, to], { duration: 700, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', fill: 'forwards' })
-      .finished.then(function () { location.href = a.href; });
-  }
-  // coming back with the browser's back button can bring the page back as it
-  // was left, picture and all
+  // only the grid-to-project step is animated; every other page change is plain
+  window.addEventListener('pageswap', function (e) {
+    if (e.viewTransition && !morphing) e.viewTransition.skipTransition();
+  });
+  window.addEventListener('pagereveal', function (e) {
+    if (e.viewTransition && !document.querySelector('[style*="view-transition-name"]')) e.viewTransition.skipTransition();
+  });
+  // back from a project, the tile it left from shouldn't stay marked
   window.addEventListener('pageshow', function (e) {
     if (!e.persisted) return;
-    document.querySelectorAll('.expand').forEach(function (n) { n.remove(); });
+    morphing = false;
+    parts.forEach(function (part) {
+      document.querySelectorAll('[style*="project-' + part + '"]').forEach(function (n) { name(n); });
+    });
   });
-  // the project page holds the same picture in the same place until its own
-  // full-screen picture has drawn, then simply drops it
-  function arrive(slug) {
-    var s = recall('expand');
-    if (!s) return function () {};
-    try { sessionStorage.removeItem('expand'); } catch (e) {}
-    try { s = JSON.parse(s); } catch (e) { return function () {}; }
-    if (calm || s.slug !== slug) return function () {};
-    var box = cover(s.src);
-    var place = heroBox(window.innerHeight);
-    Object.keys(place).forEach(function (k) { box.style[k] = place[k]; });
-    var drop = function () { box.remove(); };
-    setTimeout(drop, 3000); // never stay
-    return function () {
-      var img = document.querySelector('#project-hero img');
-      if (!img) return drop();
-      var shown = img.decode ? img.decode() : Promise.resolve();
-      shown.then(drop, drop);
-    };
-  }
 
   // Home: one to three projects per row depending on how wide each one's first
   // image is. Every image in a row shares one height.
@@ -196,10 +169,14 @@
     a.appendChild(Site.shot(img));
     var text = el('div', 'tile-text');
     text.appendChild(meta(p));
-    text.appendChild(el('h3', null, p.title));
+    var h3 = el('h3');
+    h3.appendChild(el('span', null, p.title)); // the span moves when the project opens
+    text.appendChild(h3);
     text.appendChild(el('p', 'summary', p.summary));
     a.appendChild(text);
-    a.addEventListener('click', function (e) { expand(e, a, p); });
+    a.addEventListener('click', function (e) {
+      if (e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) unfold(a, p);
+    });
     return { node: a, r: r };
   }
 
@@ -268,24 +245,13 @@
     var p = projects[k];
     document.title = p.title + ', Roger Nicholas';
     page.textContent = '';
-    var hero = document.getElementById('project-hero');
-    if (hero) {
-      var first = (p.images || [])[0];
-      hero.textContent = '';
-      hero.hidden = !(first && first.src);
-      if (!hero.hidden) {
-        var pic = document.createElement('img');
-        pic.src = first.src;
-        pic.alt = first.alt || '';
-        pic.decoding = 'async';
-        hero.appendChild(pic);
-      }
-    }
     page.appendChild(backLink('← All projects', 'detail-back'));
 
     var head = el('header', 'detail-head');
     head.appendChild(meta(p, true));
-    head.appendChild(el('h1', null, p.title));
+    var h1 = el('h1');
+    h1.appendChild(el('span', null, p.title));
+    head.appendChild(h1);
     head.appendChild(el('p', 'summary', p.summary));
     page.appendChild(head);
 
@@ -365,13 +331,41 @@
     }
     window.scrollTo(0, 0);
     // the project fades in piece by piece each time one is opened
-    Site.reveal(page.querySelectorAll('.detail-back, .detail-head, .gallery-item, .detail-body, .detail-nav'));
+    // arriving from the grid, the moving parts take their names and skip the
+    // fade-in; everything else fades in around them
+    var landing = recall(MORPH) === p.slug;
+    remember(MORPH, null);
+    var moving = [];
+    if (landing) {
+      var h = page.querySelector('.detail-head');
+      name(h.querySelector('.meta'), 'meta');
+      name(h.querySelector('h1 span'), 'title');
+      name(h.querySelector('.summary'), 'summary');
+      name(page.querySelector('.video, .gallery-item .shot'), 'picture');
+      moving = [h, page.querySelector('.gallery-item')];
+    }
+    Site.reveal(Array.prototype.filter.call(
+      page.querySelectorAll('.detail-back, .detail-head, .gallery-item, .detail-body, .detail-nav'),
+      function (n) { return moving.indexOf(n) === -1; }));
   }
 
   var restore = list ? setupReturn() : null;
-  var landed = page ? arrive(decodeURIComponent(location.hash.slice(1))) : null;
 
-  Site.load('content/projects.json')
+  // The project page reads the list straight away, while it is still loading,
+  // so it is drawn before its first paint (project.html holds that paint back
+  // until it is). The home page loads it as usual.
+  function loadNow(path) {
+    try {
+      var x = new XMLHttpRequest();
+      x.open('GET', path, false);
+      x.send();
+      if (x.status === 200 || (x.status === 0 && x.responseText)) return JSON.parse(x.responseText);
+    } catch (e) {}
+    return null;
+  }
+  var now = page ? loadNow('content/projects.json') : null;
+
+  (now ? Promise.resolve(now) : Site.load('content/projects.json'))
     .then(function (data) {
       var projects = byYear(data.projects || []);
       if (!projects.length) return;
@@ -389,13 +383,11 @@
       }
       if (page) {
         renderPage(projects);
-        landed();
         window.addEventListener('hashchange', function () { renderPage(projects); });
       }
     })
     .catch(function () {
       document.documentElement.classList.remove('returning');
-      if (landed) landed();
       var target = list || page;
       if (target) target.appendChild(el('p', 'load-error', 'Projects could not be loaded. Refresh the page to try again.'));
     });
