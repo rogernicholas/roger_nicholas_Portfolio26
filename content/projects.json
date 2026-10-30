@@ -556,26 +556,32 @@
       "images": [
         {
           "src": "images/web/strongr-1.jpg",
-          "alt": "The app's start screen",
-          "ratio": "739 / 1600",
-          "caption": ""
-        },
-        {
-          "src": "images/web/strongr-3.jpg",
-          "alt": "A progress chart for bench press",
-          "ratio": "739 / 1600",
+          "alt": "The start screen, with the next routine ready to go",
+          "ratio": "803 / 1600",
           "caption": ""
         },
         {
           "src": "images/web/strongr-2.jpg",
-          "alt": "The calendar of logged workouts",
-          "ratio": "739 / 1600",
+          "alt": "Logging sets during a workout, with last time shown in grey",
+          "ratio": "803 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/web/strongr-3.jpg",
+          "alt": "The calendar of workouts and weekly bodyweight",
+          "ratio": "803 / 1600",
           "caption": ""
         },
         {
           "src": "images/web/strongr-4.jpg",
-          "alt": "Choosing exercises for a routine",
-          "ratio": "739 / 1600",
+          "alt": "A progress chart for bench press",
+          "ratio": "803 / 1600",
+          "caption": ""
+        },
+        {
+          "src": "images/web/strongr-5.jpg",
+          "alt": "An overview of workouts, length and calories",
+          "ratio": "803 / 1600",
           "caption": ""
         }
       ]
