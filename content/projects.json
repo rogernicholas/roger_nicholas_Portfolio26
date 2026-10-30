@@ -548,7 +548,8 @@
       "kind": "Workout tracker app",
       "summary": "An offline Android app for logging workouts and tracking progress.",
       "body": [
-        "An offline Android app for logging workouts, saving routines and tracking progress with charts and a calendar. All data stays on the phone.",
+        "An offline Android app for logging workouts. It lines up your next routine, shows last time's sets while you lift and keeps warm-up sets apart.",
+        "Progress shows up in a chart for each exercise, a calendar with your weekly bodyweight and an overview of workout length and calories. All data stays on the phone.",
         "Largely vibe-coded with Claude Code."
       ],
       "tech": "React Native · Expo · TypeScript · SQLite",
