@@ -7,7 +7,43 @@
   if (!list && !page) return;
   var el = Site.el;
 
-  function link(p) { return 'project.html#' + p.slug; }
+  // The film and painting pages (film.html, painting.html) each show one side
+  // of the work on its own, for applications. A project opened from one of
+  // them stays on that side: project.html?side=film#slug keeps its header,
+  // "All projects" and previous/next within the same field.
+  var SIDES = {
+    film: { field: 'Film', page: 'film.html', first: ['space-analogues'] },
+    painting: { field: 'Painting', page: 'painting.html', first: [] }
+  };
+  var sideName = list ? list.dataset.side : new URLSearchParams(location.search).get('side');
+  var side = SIDES[sideName] || null;
+  if (!side) sideName = null;
+
+  function link(p) { return 'project.html' + (side ? '?side=' + sideName : '') + '#' + p.slug; }
+
+  // a side's own projects, its lead projects first
+  function forSide(projects) {
+    var mine = projects.filter(function (p) { return p.field === side.field; });
+    var lead = side.first.map(function (slug) {
+      return mine.filter(function (p) { return p.slug === slug; })[0];
+    }).filter(Boolean);
+    return lead.concat(mine.filter(function (p) { return lead.indexOf(p) === -1; }));
+  }
+
+  // project page opened from a side: the header and menu lead back to that side only
+  function sideChrome() {
+    var home = side.page;
+    var links = [['Work', home + '#work'], ['CV', home + '#cv'], ['Contact', home + '#contact']];
+    document.querySelectorAll('.logo').forEach(function (a) { a.href = home; });
+    document.querySelectorAll('.nav-links, .menu-main').forEach(function (nav) {
+      nav.textContent = '';
+      links.forEach(function (l) { var a = el('a', null, l[0]); a.href = l[1]; nav.appendChild(a); });
+    });
+    document.querySelectorAll('.menu-col').forEach(function (col) {
+      if (col.querySelector('[data-field]')) col.remove();
+      col.querySelectorAll('a[href*="github.com"]').forEach(function (a) { a.remove(); });
+    });
+  }
 
   // "2026 · Film", plus the kind on the project page; any part may be missing
   function meta(p, withKind) {
@@ -46,7 +82,7 @@
 
   function backLink(text, cls) {
     var a = el('a', cls, text);
-    a.href = 'home.html#projects';
+    a.href = side ? side.page + '#work' : 'home.html#projects';
     a.addEventListener('click', function (e) {
       var s = spot();
       if (!s || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -349,6 +385,23 @@
       function (n) { return moving.indexOf(n) === -1; }));
   }
 
+  // Painting page: the paintings themselves, straight from a project's
+  // images, leaving out any listed in data-skip (photos of the show)
+  var paintings = document.getElementById('paintings');
+  function renderPaintings(all) {
+    var from = all.filter(function (p) { return p.slug === paintings.dataset.from; })[0];
+    var skip = (paintings.dataset.skip || '').split(',');
+    if (!from) return;
+    (from.images || []).forEach(function (img) {
+      if (skip.indexOf(img.src) !== -1) return;
+      var fig = el('figure', 'gallery-item');
+      fig.appendChild(Site.shot(img));
+      if (img.caption) fig.appendChild(el('figcaption', null, img.caption));
+      paintings.appendChild(fig);
+    });
+    Site.reveal(paintings.querySelectorAll('.gallery-item'));
+  }
+
   var restore = list ? setupReturn() : null;
 
   // The project page reads the list straight away, while it is still loading,
@@ -367,10 +420,16 @@
 
   (now ? Promise.resolve(now) : Site.load('content/projects.json'))
     .then(function (data) {
-      var projects = byYear(data.projects || []);
+      var all = data.projects || [];
+      var projects = byYear(all);
+      if (side) projects = forSide(projects);
       if (!projects.length) return;
+      if (paintings) renderPaintings(all);
       if (list) {
-        var shown = setupFilters(projects);
+        // a side page can pick a few of its projects: data-only="judafest"
+        var only = list.dataset.only ? list.dataset.only.split(',') : null;
+        if (only) projects = projects.filter(function (p) { return only.indexOf(p.slug) !== -1; });
+        var shown = side ? function () { return projects; } : setupFilters(projects);
         renderList(shown(), true);
         if (restore) restore(); else settleHash();
         var lastW = list.clientWidth, timer;
@@ -382,6 +441,7 @@
         });
       }
       if (page) {
+        if (side) sideChrome();
         renderPage(projects);
         window.addEventListener('hashchange', function () { renderPage(projects); });
       }
