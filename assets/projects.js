@@ -44,9 +44,11 @@
   }
   function here() { return location.pathname + location.search; }
 
-  function backLink(text, cls) {
+  // without a spot to return to (someone opened a project from a link Roger
+  // sent), "All …" shows the projects of the same field only
+  function backLink(text, cls, field) {
     var a = el('a', cls, text);
-    a.href = 'home.html#projects';
+    a.href = 'home.html' + (field ? '?field=' + encodeURIComponent(field) : '') + '#projects';
     a.addEventListener('click', function (e) {
       var s = spot();
       if (!s || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -243,9 +245,19 @@
     var k = 0;
     for (var i = 0; i < projects.length; i++) if (projects[i].slug === slug) k = i;
     var p = projects[k];
+    // each project page stands on its own: its links lead only to projects of
+    // the same field, so a film link never pulls the visitor towards painting
+    var field = p.field;
+    // came here from the home list: "All projects" goes back to where they were
+    var s = spot();
+    var fromHome = s && s.url.indexOf('field=') === -1;
+    if (fromHome) field = null;
+    var all = field ? 'All ' + field.toLowerCase() : 'All projects';
+    var same = projects.filter(function (q) { return q.field === p.field; });
+    var j = same.indexOf(p);
     document.title = p.title + ', Roger Nicholas';
     page.textContent = '';
-    page.appendChild(backLink('← All projects', 'detail-back'));
+    page.appendChild(backLink('← ' + all, 'detail-back', field));
 
     var head = el('header', 'detail-head');
     head.appendChild(meta(p, true));
@@ -318,13 +330,13 @@
       page.appendChild(body);
     }
 
-    if (projects.length > 1) {
+    if (same.length > 1) {
       var nav = el('nav', 'detail-nav');
       nav.setAttribute('aria-label', 'More projects');
-      var prev = projects[(k - 1 + projects.length) % projects.length];
-      var next = projects[(k + 1) % projects.length];
+      var prev = same[(j - 1 + same.length) % same.length];
+      var next = same[(j + 1) % same.length];
       var a1 = el('a', null, '← ' + prev.title); a1.href = link(prev);
-      var a2 = backLink('All projects');
+      var a2 = backLink(all, null, field);
       var a3 = el('a', null, next.title + ' →'); a3.href = link(next);
       nav.appendChild(a1); nav.appendChild(a2); nav.appendChild(a3);
       page.appendChild(nav);
