@@ -204,8 +204,9 @@
     projects = projects.filter(function (p) { return p.images && p.images.length; });
     var w = list.clientWidth;
     var narrow = w < 640;
-    var gap = narrow ? 0 : 40; // matches --s-4 between tiles
-    var h = 300;               // target image height for a row
+    var rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 10;
+    var gap = narrow ? 0 : 4 * rem; // matches --s-4 between tiles
+    var h = 30 * rem;               // target image height for a row
     var rows = [], row = [], sum = 0;
     projects.map(tile).forEach(function (t) {
       var wouldBe = (sum + t.r) * h + row.length * gap;
