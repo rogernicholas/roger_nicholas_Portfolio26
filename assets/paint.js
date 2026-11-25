@@ -185,6 +185,6 @@
     clearTimeout(timer);
     timer = setTimeout(hint, ms);
   }
-  schedule(9000);
-  canvas.addEventListener('pointerup', function () { if (!hinted) schedule(2500); });
+  schedule(5000);
+  canvas.addEventListener('pointerup', function () { if (!hinted) schedule(1000); });
 })();
