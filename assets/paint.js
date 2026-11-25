@@ -169,4 +169,22 @@
 
   window.addEventListener('resize', fit);
   fit();
+
+  // Hint that the name leads in: underline it shortly after the first stroke,
+  // or after a while if the visitor hasn't touched the paper at all.
+  var name = document.querySelector('.name');
+  var hinted = false;
+  var timer = null;
+  function hint() {
+    if (hinted || !name) return;
+    if (down) { schedule(800); return; } // never mid-stroke
+    hinted = true;
+    name.classList.add('hint');
+  }
+  function schedule(ms) {
+    clearTimeout(timer);
+    timer = setTimeout(hint, ms);
+  }
+  schedule(9000);
+  canvas.addEventListener('pointerup', function () { if (!hinted) schedule(2500); });
 })();

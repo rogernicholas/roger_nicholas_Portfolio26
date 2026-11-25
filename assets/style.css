@@ -220,6 +220,26 @@ button { font: inherit; color: inherit; }
   transition: opacity 0.25s ease;
 }
 .name:hover { color: var(--accent); opacity: 0.7; }
+/* A quiet hint that the name is the way in: once the visitor has painted a
+   little (or sat still a while), a thin brush line draws itself under it. */
+.name { position: relative; }
+.name::after {
+  content: "";
+  position: absolute;
+  left: 0.8rem;
+  right: 0.8rem;
+  bottom: 0.2rem;
+  height: 0.2rem;
+  border-radius: 0.2rem;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.name.hint::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .name::after { transition: none; }
+}
 
 /* ---------- Header and menu ---------- */
 body::before { /* paints the band above the sticky header on phones */
